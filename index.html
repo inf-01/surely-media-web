@@ -8,14 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 <style>
 :root {
---primary: #40E0D0; /* Turquesa /
---accent: #FF8C00; / Naranja Neón /
+--primary: #40E0D0;
+--accent: #FF8C00;
 --bg: #030303;
 --glass: rgba(255, 255, 255, 0.02);
---border-soft: rgba(64, 224, 208, 0.15);
---border-neon: rgba(255, 140, 0, 0.4); / Contorno naranja neón /
---text-main: #e0e0e0;
---text-dim: #999;
+--border-neon: rgba(255, 140, 0, 0.5);
+--text-main: #f0f0f0;
+--text-dim: #a0a0a0;
 }
 body {
 background-color: var(--bg);
@@ -28,7 +27,7 @@ overflow-x: hidden;
 .background-glow {
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
-background: radial-gradient(circle at 50% -10%, #1a2e2c 0%, #030303 75%);
+background: radial-gradient(circle at 50% -10%, #002b36 0%, #030303 75%);
 z-index: -1;
 }
 .container {
@@ -39,14 +38,13 @@ text-align: center;
 }
 .brand {
 margin-bottom: 60px;
-animation: fadeIn 1.2s ease-out;
 }
 .brand h1 {
 font-family: 'Playfair Display', serif;
-font-size: clamp(2.8rem, 9vw, 5rem);
+font-size: clamp(3rem, 10vw, 5.5rem);
 margin: 0;
-letter-spacing: -1.5px;
-background: linear-gradient(to bottom, #fff 30%, var(--primary) 150%);
+letter-spacing: -2px;
+background: linear-gradient(to bottom, #fff 40%, var(--primary) 150%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
@@ -55,102 +53,81 @@ font-size: 0.8rem;
 text-transform: uppercase;
 letter-spacing: 7px;
 color: var(--accent);
-margin-top: 10px;
+margin-top: 15px;
 font-weight: 700;
-opacity: 0.9;
 }
 .hero-box {
 background: var(--glass);
-backdrop-filter: blur(20px);
-border: 1px solid var(--border-soft);
-padding: 60px 40px;
-border-radius: 32px;
-margin: 40px 0 80px 0;
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+border: 1px solid rgba(64, 224, 208, 0.2);
+padding: 70px 40px;
+border-radius: 40px;
+margin: 50px 0 90px 0;
 box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
 }
 .hero-box h2 {
 font-weight: 800;
-font-size: clamp(1.8rem, 5vw, 2.5rem);
+font-size: clamp(2rem, 6vw, 3rem);
 color: #fff;
 margin-bottom: 25px;
 letter-spacing: -1px;
-line-height: 1.2;
 }
 .hero-box p {
-font-size: 1.15rem;
+font-size: 1.2rem;
 color: var(--text-dim);
-max-width: 750px;
+max-width: 800px;
 margin: 0 auto;
 }
 .services {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 gap: 30px;
 text-align: left;
 }
 .service-card {
-background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
-padding: 45px 35px;
-border: 1px solid var(--border-neon); / Línea de contorno naranja neón */
-border-radius: 24px;
-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-position: relative;
-overflow: hidden;
-box-shadow: 0 10px 30px -15px rgba(255, 140, 0, 0.2);
+background: rgba(255, 255, 255, 0.01);
+padding: 50px 40px;
+border: 2px solid var(--border-neon);
+border-radius: 28px;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .service-card:hover {
-border-color: var(--accent);
-background: rgba(255, 140, 0, 0.06);
-transform: translateY(-8px);
-box-shadow: 0 20px 40px -10px rgba(255, 140, 0, 0.3);
+transform: translateY(-10px);
+background: rgba(255, 140, 0, 0.05);
+box-shadow: 0 20px 50px rgba(255, 140, 0, 0.2);
 }
 .service-card h3 {
 color: #fff;
-font-size: 1.5rem;
-margin-bottom: 15px;
+font-size: 1.6rem;
+margin-bottom: 20px;
 font-weight: 700;
-display: flex;
-align-items: center;
-}
-.service-card h3::before {
-content: '';
-width: 12px;
-height: 2px;
-background: var(--primary);
-margin-right: 12px;
-display: inline-block;
 }
 .service-card p {
-font-size: 0.95rem;
+font-size: 1rem;
 color: var(--text-dim);
 margin: 0;
-line-height: 1.7;
 }
 .cta {
 display: inline-block;
 margin-top: 80px;
-padding: 22px 60px;
+padding: 24px 70px;
 background: transparent;
 color: var(--primary);
 border: 2px solid var(--primary);
 text-decoration: none;
 font-weight: 800;
-border-radius: 12px;
-transition: all 0.4s ease;
+border-radius: 14px;
+transition: 0.3s;
 text-transform: uppercase;
-font-size: 0.9rem;
 letter-spacing: 2px;
 }
 .cta:hover {
 background: var(--accent);
 border-color: var(--accent);
 color: #000;
-box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
-transform: scale(1.02);
-}
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
+transform: scale(1.05);
 }
 @media (max-width: 768px) {
 .container { padding: 40px 20px; }
