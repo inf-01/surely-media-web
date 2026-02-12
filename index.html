@@ -9,10 +9,11 @@
 <style>
 :root {
 --primary: #40E0D0; /* Turquesa /
---accent: #FF8C00; / Orange */
+--accent: #FF8C00; / Naranja Neón /
 --bg: #030303;
 --glass: rgba(255, 255, 255, 0.02);
---border: rgba(64, 224, 208, 0.15);
+--border-soft: rgba(64, 224, 208, 0.15);
+--border-neon: rgba(255, 140, 0, 0.4); / Contorno naranja neón /
 --text-main: #e0e0e0;
 --text-dim: #999;
 }
@@ -61,7 +62,7 @@ opacity: 0.9;
 .hero-box {
 background: var(--glass);
 backdrop-filter: blur(20px);
-border: 1px solid var(--border);
+border: 1px solid var(--border-soft);
 padding: 60px 40px;
 border-radius: 32px;
 margin: 40px 0 80px 0;
@@ -90,16 +91,18 @@ text-align: left;
 .service-card {
 background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
 padding: 45px 35px;
-border: 1px solid var(--border);
+border: 1px solid var(--border-neon); / Línea de contorno naranja neón */
 border-radius: 24px;
 transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 position: relative;
 overflow: hidden;
+box-shadow: 0 10px 30px -15px rgba(255, 140, 0, 0.2);
 }
 .service-card:hover {
 border-color: var(--accent);
-background: rgba(255, 140, 0, 0.04);
+background: rgba(255, 140, 0, 0.06);
 transform: translateY(-8px);
+box-shadow: 0 20px 40px -10px rgba(255, 140, 0, 0.3);
 }
 .service-card h3 {
 color: #fff;
