@@ -1,214 +1,186 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surely Media | Strategy Simplified</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00d4ff; /* Azul Cian Tecnológico */
-            --bg: #030303;
-            --glass: rgba(255, 255, 255, 0.02);
-            --border: rgba(0, 212, 255, 0.12);
-            --text-main: #e0e0e0;
-            --text-dim: #888;
-        }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Efecto de profundidad tipo Búnker */
-        .background-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% -10%, #002b36 0%, #030303 70%);
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        /* Identidad Visual */
-        .brand {
-            margin-bottom: 60px;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        .brand h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 9vw, 5rem);
-            margin: 0;
-            letter-spacing: -1.5px;
-            background: linear-gradient(to bottom, #fff 30%, var(--primary) 150%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .brand p {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 7px;
-            color: var(--primary);
-            margin-top: 10px;
-            font-weight: 700;
-            opacity: 0.9;
-        }
-
-        /* Hero: El Gancho Comercial */
-        .hero-box {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            padding: 60px 40px;
-            border-radius: 32px;
-            margin: 40px 0 80px 0;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-box h2 {
-            font-weight: 800;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: #fff;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-
-        .hero-box p {
-            font-size: 1.15rem;
-            color: var(--text-dim);
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        /* Grid de Servicios con UI Premium */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-
-        .service-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
-            padding: 45px 35px;
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            background: rgba(0, 212, 255, 0.04);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .service-card h3 {
-            color: #fff;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-
-        .service-card h3::before {
-            content: '';
-            width: 12px;
-            height: 2px;
-            background: var(--primary);
-            margin-right: 12px;
-            display: inline-block;
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-dim);
-            margin: 0;
-            line-height: 1.7;
-        }
-
-        /* Call To Action Estilo Minimalista */
-        .cta {
-            display: inline-block;
-            margin-top: 80px;
-            padding: 22px 60px;
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 12px;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-
-        .cta:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
-            transform: scale(1.02);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 40px 20px; }
-            .hero-box { padding: 40px 20px; }
-        }
-    </style>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surely Media | Strategy Simplified</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+--primary: #40E0D0; /* Turquesa /
+--accent: #FF8C00; / Orange */
+--bg: #030303;
+--glass: rgba(255, 255, 255, 0.02);
+--border: rgba(64, 224, 208, 0.15);
+--text-main: #e0e0e0;
+--text-dim: #999;
+}
+body {
+background-color: var(--bg);
+color: var(--text-main);
+font-family: 'Inter', sans-serif;
+margin: 0;
+line-height: 1.6;
+overflow-x: hidden;
+}
+.background-glow {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: radial-gradient(circle at 50% -10%, #1a2e2c 0%, #030303 75%);
+z-index: -1;
+}
+.container {
+max-width: 1100px;
+margin: 0 auto;
+padding: 80px 20px;
+text-align: center;
+}
+.brand {
+margin-bottom: 60px;
+animation: fadeIn 1.2s ease-out;
+}
+.brand h1 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2.8rem, 9vw, 5rem);
+margin: 0;
+letter-spacing: -1.5px;
+background: linear-gradient(to bottom, #fff 30%, var(--primary) 150%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.brand p {
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 7px;
+color: var(--accent);
+margin-top: 10px;
+font-weight: 700;
+opacity: 0.9;
+}
+.hero-box {
+background: var(--glass);
+backdrop-filter: blur(20px);
+border: 1px solid var(--border);
+padding: 60px 40px;
+border-radius: 32px;
+margin: 40px 0 80px 0;
+box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+}
+.hero-box h2 {
+font-weight: 800;
+font-size: clamp(1.8rem, 5vw, 2.5rem);
+color: #fff;
+margin-bottom: 25px;
+letter-spacing: -1px;
+line-height: 1.2;
+}
+.hero-box p {
+font-size: 1.15rem;
+color: var(--text-dim);
+max-width: 750px;
+margin: 0 auto;
+}
+.services {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+text-align: left;
+}
+.service-card {
+background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+padding: 45px 35px;
+border: 1px solid var(--border);
+border-radius: 24px;
+transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+position: relative;
+overflow: hidden;
+}
+.service-card:hover {
+border-color: var(--accent);
+background: rgba(255, 140, 0, 0.04);
+transform: translateY(-8px);
+}
+.service-card h3 {
+color: #fff;
+font-size: 1.5rem;
+margin-bottom: 15px;
+font-weight: 700;
+display: flex;
+align-items: center;
+}
+.service-card h3::before {
+content: '';
+width: 12px;
+height: 2px;
+background: var(--primary);
+margin-right: 12px;
+display: inline-block;
+}
+.service-card p {
+font-size: 0.95rem;
+color: var(--text-dim);
+margin: 0;
+line-height: 1.7;
+}
+.cta {
+display: inline-block;
+margin-top: 80px;
+padding: 22px 60px;
+background: transparent;
+color: var(--primary);
+border: 2px solid var(--primary);
+text-decoration: none;
+font-weight: 800;
+border-radius: 12px;
+transition: all 0.4s ease;
+text-transform: uppercase;
+font-size: 0.9rem;
+letter-spacing: 2px;
+}
+.cta:hover {
+background: var(--accent);
+border-color: var(--accent);
+color: #000;
+box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
+transform: scale(1.02);
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+.container { padding: 40px 20px; }
+.hero-box { padding: 40px 20px; }
+}
+</style>
 </head>
 <body>
-    <div class="background-glow"></div>
-    <div class="container">
-        
-        <header class="brand">
-            <h1>Surely Media</h1>
-            <p>Strategy Simplified. Results Guaranteed.</p>
-        </header>
-
-        <section class="hero-box">
-            <h2>High-Impact Strategies for High-Authority Brands.</h2>
-            <p>We don't just manage social media; we engineer digital ecosystems through tactical infrastructure and strategic narrative.</p>
-        </section>
-
-        <div class="services">
-            <div class="service-card">
-                <h3>Social Media Strategy</h3>
-                <p>Content engineering specifically designed for corporate and medical niches. We deploy data-driven roadmaps that turn attention into brand capital.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>Content & Community</h3>
-                <p>Community management focused on retention and loyalty. We create high-end visual assets that project absolute authority and professional trust.</p>
-            </div>
-
-            <div class="service-card">
-                <h3>Brand Positioning</h3>
-                <p>Elevate your business's perceived value. We position founders and firms as undisputed market leaders through strategic branding and social SEO.</p>
-            </div>
-        </div>
-
-        <a href="mailto:info@surely.media" class="cta">Start Your Consultation</a>
-
-    </div>
+<div class="background-glow"></div>
+<div class="container">
+<header class="brand">
+<h1>Surely Media</h1>
+<p>Strategy Simplified. Results Guaranteed.</p>
+</header>
+<section class="hero-box">
+<h2>High-Impact Strategies for Modern Businesses.</h2>
+<p>We don't just manage social media; we engineer digital ecosystems through tactical infrastructure and strategic narrative for any industry.</p>
+</section>
+<div class="services">
+<div class="service-card">
+<h3>Social Media Strategy</h3>
+<p>Content engineering specifically designed for growth-oriented businesses. We deploy data-driven roadmaps that turn attention into brand capital across all niches.</p>
+</div>
+<div class="service-card">
+<h3>Content & Community</h3>
+<p>Community management focused on retention and loyalty. We create high-end visual assets that project absolute authority and professional trust.</p>
+</div>
+<div class="service-card">
+<h3>Brand Positioning</h3>
+<p>Elevate your business's perceived value. We position firms as undisputed market leaders through strategic branding and social SEO.</p>
+</div>
+</div>
+<a href="mailto:info@surely.media" class="cta">Start Your Consultation</a>
+</div>
 </body>
 </html>
