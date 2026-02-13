@@ -4,95 +4,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surely Media | Social Media Marketing & Joyful Strategy</title>
-<meta name="description" content="Social media marketing agency for businesses. We build vibrant communities and high-impact content on TikTok, Instagram, LinkedIn and more.">
+<title>Surely Media | Strategy Simplified</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 <style>
 :root {
---primary: #40E0D0;
+--primary: #00f2ff;
 --accent: #FF8C00;
 --bg: #030303;
 --glass: rgba(255, 255, 255, 0.02);
---border-neon: rgba(255, 140, 0, 0.5);
---text-main: #f0f0f0;
---text-dim: #a0a0a0;
+--border-neon: rgba(255, 140, 0, 0.45);
+--text-main: #ffffff;
+--text-dim: #b0b0b0;
 }
 body {
 background-color: var(--bg);
 color: var(--text-main);
 font-family: 'Inter', sans-serif;
 margin: 0;
-line-height: 1.6;
+line-height: 1.8;
 overflow-x: hidden;
 }
 .background-glow {
 position: fixed;
 top: 0; left: 0; width: 100%; height: 100%;
-background: radial-gradient(circle at 50% -10%, #002b36 0%, #030303 75%);
+background: radial-gradient(circle at 50% -10%, #001f24 0%, #030303 80%);
 z-index: -1;
 }
 .container {
-max-width: 1100px;
+max-width: 1200px;
 margin: 0 auto;
-padding: 80px 20px;
+padding: 100px 20px;
 text-align: center;
 }
 .brand {
-margin-bottom: 60px;
+margin-bottom: 80px;
 }
 .brand h1 {
 font-family: 'Playfair Display', serif;
-font-size: clamp(3rem, 10vw, 5.5rem);
+font-size: clamp(3.5rem, 12vw, 6rem);
 margin: 0;
-letter-spacing: -2px;
-background: linear-gradient(to bottom, #fff 40%, var(--primary) 150%);
+letter-spacing: -3px;
+background: linear-gradient(to bottom, #fff 50%, var(--primary) 150%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
 .brand p {
-font-size: 0.8rem;
+font-size: 0.85rem;
 text-transform: uppercase;
-letter-spacing: 7px;
+letter-spacing: 10px;
 color: var(--accent);
-margin-top: 15px;
-font-weight: 700;
+margin-top: 20px;
+font-weight: 800;
 }
 .hero-box {
 background: var(--glass);
-backdrop-filter: blur(25px);
--webkit-backdrop-filter: blur(25px);
-border: 1px solid rgba(64, 224, 208, 0.2);
-padding: 70px 40px;
+backdrop-filter: blur(30px);
+-webkit-backdrop-filter: blur(30px);
+border: 1px solid rgba(0, 242, 255, 0.15);
+padding: 80px 40px;
 border-radius: 40px;
-margin: 50px 0 60px 0;
+margin-bottom: 100px;
 box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
 }
 .hero-box h2 {
 font-weight: 800;
-font-size: clamp(2rem, 6vw, 2.8rem);
+font-size: clamp(2rem, 7vw, 3rem);
 color: #fff;
 margin-bottom: 25px;
-letter-spacing: -1px;
+letter-spacing: -1.5px;
 }
 .hero-box p {
-font-size: 1.15rem;
+font-size: 1.2rem;
 color: var(--text-dim);
-max-width: 850px;
+max-width: 900px;
 margin: 0 auto;
 }
 .about-box {
 background: var(--glass);
 backdrop-filter: blur(20px);
-border: 1px solid rgba(64, 224, 208, 0.15);
+border: 1px solid rgba(0, 242, 255, 0.15);
 padding: 50px 40px;
 border-radius: 32px;
-margin-bottom: 80px;
+margin-bottom: 100px;
 text-align: left;
 }
 .about-box h2 {
 color: var(--primary);
 font-family: 'Playfair Display', serif;
-font-size: 2.2rem;
+font-size: clamp(2.2rem, 5vw, 2.8rem);
 margin-top: 0;
 }
 .about-box h3 {
@@ -103,42 +102,42 @@ margin-top: 30px;
 .services {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 25px;
+gap: 30px;
 text-align: left;
 }
 .service-card {
 background: rgba(255, 255, 255, 0.01);
-padding: 35px;
-border: 2px solid var(--border-neon);
+padding: 50px 40px;
+border: 1px solid var(--border-neon);
 border-radius: 28px;
 transition: all 0.4s ease;
 }
 .service-card:hover {
-transform: translateY(-8px);
+border-color: var(--accent);
 background: rgba(255, 140, 0, 0.05);
-box-shadow: 0 20px 50px rgba(255, 140, 0, 0.2);
+transform: translateY(-10px);
 }
 .service-card h3 {
 color: #fff;
-font-size: 1.4rem;
-margin-bottom: 15px;
-font-weight: 700;
+font-size: 1.6rem;
+margin-bottom: 20px;
+font-weight: 800;
 }
 .service-card p {
 margin: 0;
 color: var(--text-dim);
-font-size: 1rem;
+font-size: 1.05rem;
 }
 .cta {
 display: inline-block;
-margin-top: 60px;
+margin-top: 80px;
 padding: 24px 70px;
 background: transparent;
 color: var(--primary);
 border: 2px solid var(--primary);
 text-decoration: none;
 font-weight: 800;
-border-radius: 14px;
+border-radius: 100px;
 transition: 0.3s;
 text-transform: uppercase;
 letter-spacing: 2px;
@@ -150,9 +149,9 @@ color: #000;
 box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 }
 @media (max-width: 768px) {
-.container { padding: 40px 20px; }
-.hero-box { padding: 40px 20px; }
-.about-box { padding: 30px 25px; }
+.container { padding: 60px 20px; }
+.hero-box { padding: 50px 25px; }
+.about-box { padding: 40px 25px; }
 }
 </style>
 </head>
@@ -165,18 +164,18 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 </header>
 <section class="hero-box">
 <h2>Strategy Simplified. Joy Delivered.</h2>
-<p>Every brand gets its moment to shine. We build vibrant communities, craft scroll-stopping content, and create electric moments of connection that turn followers into customers.</p>
+<p>Every brand gets its moment to shine. We build vibrant communities, craft scroll-stopping content, and create electric moments of connection for any industry.</p>
 </section>
 <div class="about-box">
 <h2>Our Mission</h2>
-<p>We believe social media should feel exciting, not exhausting. Our mission is to bring genuine joy to your brand’s online presence while delivering serious results. We combine smart strategy, creative flair, and data-driven precision to help businesses grow with confidence and a big smile.</p>
+<p>We believe social media should feel exciting, not exhausting. Our mission is to bring genuine joy to your brand’s online presence while delivering serious results. We combine smart strategy, creative flair, and data-driven precision to help businesses grow with confidence.</p>
 <h3>Why Partner with Surely Media?</h3>
 <p>We’re committed, approachable, and results-obsessed. Businesses choose us because we listen, we collaborate, and we deliver—always with heart and high-fives along the way.</p>
 </div>
 <div class="services">
 <div class="service-card">
 <h3>Social Media Marketing</h3>
-<p>Social media marketing strategy, content production, publishing and monitoring across all platforms.</p>
+<p>Strategy development, content production, publishing and monitoring across all digital platforms for all business types.</p>
 </div>
 <div class="service-card">
 <h3>Community & Performance</h3>
@@ -184,7 +183,7 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 </div>
 <div class="service-card">
 <h3>Let’s create</h3>
-<p>Viral ideas, trend-worthy campaigns, and creative sparks across Instagram, TikTok, LinkedIn, Facebook, and X. We celebrate every win like it’s our own.</p>
+<p>Viral ideas, trend-worthy campaigns, and creative sparks across Instagram, TikTok, LinkedIn, Facebook, and X.</p>
 </div>
 </div>
 <a href="mailto:info@surely.media" class="cta">Connect with Surely</a>
