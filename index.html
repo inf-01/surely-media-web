@@ -12,7 +12,6 @@
 --accent: #FF8C00;
 --bg: #030303;
 --glass: rgba(255, 255, 255, 0.02);
---border-neon: rgba(255, 140, 0, 0.45);
 --text-main: #ffffff;
 --text-dim: #b0b0b0;
 }
@@ -43,18 +42,40 @@ margin-bottom: 80px;
 font-family: 'Playfair Display', serif;
 font-size: clamp(3.5rem, 12vw, 6rem);
 margin: 0;
-letter-spacing: -3px;
-background: linear-gradient(to bottom, #fff 50%, var(--primary) 150%);
+letter-spacing: -2px;
+/* Logo Original: Blanco con degradado suave a turquesa /
+background: linear-gradient(to bottom, #ffffff 40%, var(--primary) 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
+/ Efecto de Luz Eléctrica tras las letras */
+filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 25px rgba(0, 242, 255, 0.4));
 }
 .brand p {
-font-size: 0.85rem;
+font-size: 0.8rem;
 text-transform: uppercase;
 letter-spacing: 10px;
 color: var(--accent);
 margin-top: 20px;
 font-weight: 800;
+}
+.section-title {
+font-size: 1.2rem;
+text-transform: uppercase;
+letter-spacing: 6px;
+color: var(--primary);
+margin: 100px 0 40px;
+font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
+.section-title::before, .section-title::after {
+content: "";
+height: 1px;
+width: 60px;
+background: var(--primary);
+opacity: 0.4;
 }
 .hero-box {
 background: var(--glass);
@@ -63,29 +84,16 @@ backdrop-filter: blur(30px);
 border: 1px solid rgba(0, 242, 255, 0.15);
 padding: 80px 40px;
 border-radius: 40px;
-margin-bottom: 100px;
+margin-bottom: 80px;
 box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
-}
-.hero-box h2 {
-font-weight: 800;
-font-size: clamp(2rem, 7vw, 3rem);
-color: #fff;
-margin-bottom: 25px;
-letter-spacing: -1.5px;
-}
-.hero-box p {
-font-size: 1.2rem;
-color: var(--text-dim);
-max-width: 900px;
-margin: 0 auto;
 }
 .about-box {
 background: var(--glass);
 backdrop-filter: blur(20px);
-border: 1px solid rgba(0, 242, 255, 0.15);
+border: 1px solid rgba(0, 242, 255, 0.12);
 padding: 50px 40px;
 border-radius: 32px;
-margin-bottom: 100px;
+margin-bottom: 80px;
 text-align: left;
 }
 .about-box h2 {
@@ -93,11 +101,6 @@ color: var(--primary);
 font-family: 'Playfair Display', serif;
 font-size: clamp(2.2rem, 5vw, 2.8rem);
 margin-top: 0;
-}
-.about-box h3 {
-color: #fff;
-font-size: 1.3rem;
-margin-top: 30px;
 }
 .services {
 display: grid;
@@ -108,18 +111,25 @@ text-align: left;
 .service-card {
 background: rgba(255, 255, 255, 0.01);
 padding: 50px 40px;
-border: 1px solid var(--border-neon);
 border-radius: 28px;
-transition: all 0.4s ease;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.service-card:hover {
-border-color: var(--accent);
-background: rgba(255, 140, 0, 0.05);
-transform: translateY(-10px);
+.marketing-card:hover {
+border-color: var(--accent) !important;
+background: rgba(255, 140, 0, 0.04);
+transform: translateY(-12px);
+box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
+}
+.infra-card:hover {
+border-color: var(--primary) !important;
+background: rgba(0, 242, 255, 0.04);
+transform: translateY(-12px);
+box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
 }
 .service-card h3 {
 color: #fff;
-font-size: 1.6rem;
+font-size: 1.5rem;
 margin-bottom: 20px;
 font-weight: 800;
 }
@@ -130,8 +140,8 @@ font-size: 1.05rem;
 }
 .cta {
 display: inline-block;
-margin-top: 80px;
-padding: 24px 70px;
+margin-top: 100px;
+padding: 24px 80px;
 background: transparent;
 color: var(--primary);
 border: 2px solid var(--primary);
@@ -147,11 +157,11 @@ background: var(--accent);
 border-color: var(--accent);
 color: #000;
 box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
+transform: scale(1.05);
 }
 @media (max-width: 768px) {
 .container { padding: 60px 20px; }
 .hero-box { padding: 50px 25px; }
-.about-box { padding: 40px 25px; }
 }
 </style>
 </head>
@@ -168,24 +178,38 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 <div class="about-box">
 <h2>Our Mission</h2>
 <p>We believe social media should feel exciting, not exhausting. Our mission is to bring genuine joy to your brand’s online presence while delivering serious results. We combine smart strategy, creative flair, and data-driven precision to help businesses grow with confidence.</p>
-<h3>Why Partner with Surely Media?</h3>
-<p>We’re committed, approachable, and results-obsessed. Businesses choose us because we listen, we collaborate, and we deliver—always with heart and high-fives along the way.</p>
 </div>
+<div class="section-title">Marketing & Creative</div>
 <div class="services">
-<div class="service-card">
+<div class="service-card marketing-card">
 <h3>Social Media Marketing</h3>
-<p>Strategy development, content production, publishing and monitoring across all digital platforms for all business types.</p>
+<p>Podcast Thumbnails,Strategy development, content production, publishing and monitoring across all digital platforms.</p>
 </div>
-<div class="service-card">
+<div class="service-card marketing-card">
 <h3>Community & Performance</h3>
 <p>Social Media listening, community management, paid social, targeted ads and detailed analytics.</p>
 </div>
-<div class="service-card">
-<h3>Let’s create</h3>
-<p>Viral ideas, trend-worthy campaigns, and creative sparks across Instagram, TikTok, LinkedIn, Facebook, and X.</p>
+<div class="service-card marketing-card">
+<h3>Let’s Create</h3>
+<p>Viral ideas, trend-worthy campaigns, and creative sparks across Instagram, TikTok, LinkedIn, and Facebook.</p>
 </div>
 </div>
-<a href="mailto:info@surely.media" class="cta">Connect with Surely</a>
+<div class="section-title">Infrastructure & Protection</div>
+<div class="services">
+<div class="service-card infra-card">
+<h3>Identity Shielding</h3>
+<p>Corporate infrastructure migration (Workspace), advanced encryption, and protection against communication vulnerabilities.</p>
+</div>
+<div class="service-card infra-card">
+<h3>AI Conversion Engineering</h3>
+<p>Autonomous agents and high-performance landing pages designed to filter leads and turn visitors into clients.</p>
+</div>
+<div class="service-card infra-card">
+<h3>Smart Infrastructure</h3>
+<p>Elite technical SEO, architecture of conversion, and technical deployment that guarantees load speeds under 2s.</p>
+</div>
+</div>
+<a href="https://wa.me/19044777966" target="_blank" class="cta">Connect on Surely Media</a>
 </div>
 </body>
 </html>
