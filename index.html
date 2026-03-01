@@ -173,108 +173,59 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* BLINDAJE ABSOLUTO DEL CHAT - INF01 PROTOCOL */
-#chat-root {
+/* WIDGET HUNTER LEAD - AISLAMAMIENTO TOTAL /
+#bot-container {
 position: fixed !important;
-bottom: 20px !important;
-right: 20px !important;
-z-index: 99999 !important;
+bottom: 25px !important;
+right: 25px !important;
+z-index: 10000 !important;
 width: 350px !important;
 max-width: 90vw !important;
-height: auto !important;
-pointer-events: none !important;
+display: flex !important;
+flex-direction: column !important;
+align-items: flex-end !important;
 }
-#chat-button {
-width: 60px !important;
-height: 60px !important;
+#bot-window {
+width: 350px !important;
+max-width: 100% !important;
+height: 500px !important;
+background: #0d0d0d !important;
+border: 1.5px solid var(--primary) !important;
+border-radius: 24px !important;
+margin-bottom: 15px !important;
+display: none; / Inicia oculto */
+flex-direction: column !important;
+overflow: hidden !important;
+box-shadow: 0 25px 60px rgba(0,0,0,0.9) !important;
+}
+.bot-open { display: flex !important; }
+#bot-trigger {
+width: 65px !important;
+height: 65px !important;
 background: var(--primary) !important;
 border-radius: 50% !important;
 display: flex !important;
 align-items: center !important;
 justify-content: center !important;
 cursor: pointer !important;
-box-shadow: 0 5px 15px rgba(0, 242, 255, 0.4) !important;
-margin-left: auto !important;
-pointer-events: auto !important;
+box-shadow: 0 5px 20px rgba(0, 242, 255, 0.5) !important;
+transition: 0.3s !important;
+border: none !important;
 }
-#chat-window {
-width: 350px !important;
-height: 500px !important;
-background: #0a0a0a !important;
-border: 1px solid var(--primary) !important;
-border-radius: 20px !important;
-display: none;
-flex-direction: column !important;
-margin-bottom: 15px !important;
-overflow: hidden !important;
-box-shadow: 0 10px 40px rgba(0,0,0,0.9) !important;
-pointer-events: auto !important;
-}
-.bot-active {
-display: flex !important;
-}
-#chat-header {
-background: var(--primary) !important;
-color: #000 !important;
-padding: 15px !important;
-font-weight: 800 !important;
-font-size: 0.9rem !important;
-}
-#chat-messages {
-flex: 1 !important;
-padding: 15px !important;
-overflow-y: auto !important;
-display: flex !important;
-flex-direction: column !important;
-gap: 12px !important;
-}
-.msg {
-padding: 10px 14px !important;
-border-radius: 15px !important;
-font-size: 0.85rem !important;
-max-width: 80% !important;
-line-height: 1.4 !important;
-}
-.bot-msg {
-background: rgba(255,255,255,0.07) !important;
-color: #fff !important;
-align-self: flex-start !important;
-border-left: 3px solid var(--primary) !important;
-}
-.user-msg {
-background: var(--primary) !important;
-color: #000 !important;
-align-self: flex-end !important;
-font-weight: 600 !important;
-}
-#chat-input-area {
-padding: 12px !important;
-border-top: 1px solid rgba(255,255,255,0.1) !important;
-display: flex !important;
-gap: 8px !important;
-}
-#chat-input {
-background: transparent !important;
-border: 1px solid rgba(255,255,255,0.2) !important;
-color: #fff !important;
-padding: 8px !important;
-border-radius: 5px !important;
-flex: 1 !important;
-outline: none !important;
-}
-.chat-option {
-background: transparent !important;
-border: 1px solid var(--primary) !important;
-color: var(--primary) !important;
-padding: 8px !important;
-border-radius: 10px !important;
-cursor: pointer !important;
-font-size: 0.8rem !important;
-text-align: center !important;
-}
-.chat-option:hover {
-background: var(--primary) !important;
-color: #000 !important;
+#bot-trigger:hover { transform: scale(1.05); }
+#bot-header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 0.9rem; }
+#bot-msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.msg { padding: 10px 14px; border-radius: 18px; font-size: 0.88rem; max-width: 80%; line-height: 1.4; }
+.bot-msg { background: rgba(255,255,255,0.06); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
+.user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 700; }
+.opt-btn { border: 1.5px solid var(--primary); color: var(--primary); padding: 10px; border-radius: 12px; cursor: pointer; text-align: center; font-size: 0.85rem; transition: 0.2s; }
+.opt-btn:hover { background: var(--primary); color: #000; }
+#bot-input-area { padding: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
+#bot-field { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 8px; flex: 1; outline: none; }
+
+@media (max-width: 400px) {
+#bot-container { width: 300px; right: 10px; }
+#bot-window { height: 450px; }
 }
 </style>
 
@@ -326,89 +277,71 @@ color: #000 !important;
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
-<div id="chat-root">
-<div id="chat-window">
-<div id="chat-header">Surely Bot | AI Assistant</div>
-<div id="chat-messages">
-<div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
-<div id="options-box" style="display:flex; flex-direction:column; gap:8px;">
-<div class="chat-option" onclick="startFlow('Marketing')">Social Media Strategy ($1,500+)</div>
-<div class="chat-option" onclick="startFlow('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
+<div id="bot-container">
+<div id="bot-window">
+<div id="bot-header">Surely Bot | AI Lead Hunter</div>
+<div id="bot-msgs">
+<div class="msg bot-msg">Hi! I'm the Surely AI Assistant. How can I help you shine today?</div>
+<div id="opt-list" style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
+<div class="opt-btn" onclick="startFlow('Marketing')">Social Media Strategy ($1,500+)</div>
+<div class="opt-btn" onclick="startFlow('Infrastructure')">Digital Infrastructure ($1,800+)</div>
 </div>
 </div>
-<div id="chat-input-area">
-<input type="text" id="chat-input" placeholder="Type here...">
-<button id="chat-send" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 12px; font-weight:bold;">></button>
+<div id="bot-input-area">
+<input type="text" id="bot-field" placeholder="Type your message...">
+<button onclick="send()" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 12px; font-weight:bold;">></button>
 </div>
 </div>
-<div id="chat-button">
-<span style="font-size:26px;">🤖</span>
+<div id="bot-trigger" onclick="toggle()">
+<span style="font-size:30px;">🤖</span>
 </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-const btn = document.getElementById('chat-button');
-const win = document.getElementById('chat-window');
-const input = document.getElementById('chat-input');
-const send = document.getElementById('chat-send');
-const msgs = document.getElementById('chat-messages');
+const win = document.getElementById('bot-window');
+const msgs = document.getElementById('bot-msgs');
+const field = document.getElementById('bot-field');
 
-// ABRIR/CERRAR
-btn.addEventListener('click', (e) => {
-e.stopPropagation();
-win.classList.toggle('bot-active');
-});
+function toggle() {
+win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
+}
 
-// LÓGICA DE VENTAS
 window.startFlow = (type) => {
 addMsg(type, 'user');
-document.getElementById('options-box').style.display = 'none';
-
+document.getElementById('opt-list').style.display = 'none';
 setTimeout(() => {
 const price = (type === 'Marketing') ? '$1,500/mo' : '$1,800';
-addMsg("Perfect. Our " + type + " solutions start at " + price + ". Does this align with your budget?", 'bot');
-showBudget();
-}, 600);
-};
-
-function showBudget() {
+addMsg("Perfect. Our " + type + " solutions start at " + price + ". Is this within your budget?", 'bot');
 const div = document.createElement('div');
 div.style.marginTop = "10px";
 div.style.display = "flex";
 div.style.flexDirection = "column";
 div.style.gap = "8px";
-div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;No&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+div.innerHTML = &lt;div class=&quot;opt-btn&quot; onclick=&quot;lead(&#39;Yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;opt-btn&quot; onclick=&quot;lead(&#39;No&#39;)&quot;&gt;Not yet&lt;/div&gt;;
 msgs.appendChild(div);
 msgs.scrollTop = msgs.scrollHeight;
-}
-
-window.captureLead = (choice) => {
-addMsg(choice, 'user');
-if(choice === 'Yes') {
-setTimeout(() => {
-addMsg("Great! To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
-}, 800);
-} else {
-setTimeout(() => {
-addMsg("No problem! Feel free to explore our site for more info.", 'bot');
-}, 800);
-}
+}, 600);
 };
 
-function executeSend() {
-const val = input.value.trim();
+window.lead = (choice) => {
+addMsg(choice, 'user');
+setTimeout(() => {
+if(choice === 'Yes') {
+addMsg("Great! To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
+} else {
+addMsg("No problem! Feel free to explore our site for more tips.", 'bot');
+}
+}, 800);
+};
+
+function send() {
+const val = field.value.trim();
 if(val !== "") {
 addMsg(val, 'user');
-input.value = "";
-setTimeout(() => {
-addMsg("Thank you! Shirley will review this info and contact you if it's a match.", 'bot');
-}, 1000);
+field.value = "";
+setTimeout(() => { addMsg("Thank you! Shirley will review this info and contact you if it's a match.", 'bot'); }, 1000);
 }
 }
-
-send.addEventListener('click', executeSend);
-input.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSend(); });
 
 function addMsg(text, side) {
 const div = document.createElement('div');
@@ -417,7 +350,8 @@ div.innerText = text;
 msgs.appendChild(div);
 msgs.scrollTop = msgs.scrollHeight;
 }
-});
+
+field.addEventListener('keypress', (e) => { if(e.key === 'Enter') send(); });
 </script>
 
 </body>
