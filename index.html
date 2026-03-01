@@ -42,9 +42,7 @@ margin: 0 auto;
 padding: 100px 20px;
 text-align: center;
 }
-.brand {
-margin-bottom: 80px;
-}
+.brand { margin-bottom: 80px; }
 .brand h1 {
 font-family: 'Playfair Display', serif;
 font-size: clamp(3.5rem, 12vw, 6rem);
@@ -171,12 +169,57 @@ color: #000;
 box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
-@media (max-width: 768px) {
-.container { padding: 60px 20px; }
-.hero-box { padding: 50px 25px; }
-.section-title::before, .section-title::after { width: 40px; }
+
+/* HUNTER LEAD - SENIOR ISOLATION SYSTEM */
+#inf01_hunter_root {
+position: fixed !important;
+bottom: 20px !important;
+right: 20px !important;
+z-index: 2147483647 !important;
+width: 350px !important;
+max-width: 85vw !important;
+display: flex !important;
+flex-direction: column !important;
+align-items: flex-end !important;
 }
+#inf01_hunter_win {
+width: 350px !important;
+max-width: 100% !important;
+height: 500px !important;
+background: #080808 !important;
+border: 1.5px solid var(--primary) !important;
+border-radius: 20px !important;
+margin-bottom: 12px !important;
+display: none;
+flex-direction: column !important;
+overflow: hidden !important;
+box-shadow: 0 20px 50px rgba(0,0,0,0.95) !important;
+}
+#inf01_hunter_btn {
+width: 65px !important;
+height: 65px !important;
+background: var(--primary) !important;
+border-radius: 50% !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+cursor: pointer !important;
+box-shadow: 0 5px 25px rgba(0, 242, 255, 0.5) !important;
+border: none !important;
+transition: 0.3s !important;
+}
+#inf01_hunter_btn:hover { transform: scale(1.05); }
+#inf01_hunter_header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 14px; }
+#inf01_hunter_msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.inf01_m { padding: 10px 14px; border-radius: 15px; font-size: 13px; max-width: 80%; line-height: 1.4; }
+.inf01_bot { background: rgba(255,255,255,0.06); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
+.inf01_user { background: var(--primary); color: #000; align-self: flex-end; font-weight: 700; }
+.inf01_opt { border: 1px solid var(--primary); color: var(--primary); padding: 8px; border-radius: 10px; cursor: pointer; text-align: center; font-size: 12px; margin-top: 5px; }
+.inf01_opt:hover { background: var(--primary); color: #000; }
+#inf01_hunter_input { padding: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
+#inf01_field { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; flex: 1; padding: 8px; border-radius: 5px; outline: none; }
 </style>
+
 </head>
 <body>
 <div class="background-glow"></div>
@@ -225,83 +268,78 @@ transform: scale(1.05);
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
-<div id="hunter-bunker"></div>
+<div id="inf01_hunter_root">
+<div id="inf01_hunter_win">
+<div id="inf01_hunter_header">Surely AI | Lead Hunter</div>
+<div id="inf01_hunter_msgs">
+<div class="inf01_m inf01_bot">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
+<div id="inf01_opts_box" style="display:flex; flex-direction:column; gap:6px; margin-top:10px;">
+<div class="inf01_opt" onclick="inf01_start('mkt')">Social Media Strategy ($1,500+)</div>
+<div class="inf01_opt" onclick="inf01_start('inf')">Digital Infrastructure ($1,800+)</div>
+</div>
+</div>
+<div id="inf01_hunter_input">
+<input type="text" id="inf01_field" placeholder="Type here...">
+<button onclick="inf01_send()" style="background:var(--primary); border:none; border-radius:5px; padding:5px 12px; cursor:pointer; font-weight:bold;">></button>
+</div>
+</div>
+<div id="inf01_hunter_btn">
+<span style="font-size:30px;">🤖</span>
+</div>
+</div>
 
 <script>
-class HunterBot extends HTMLElement {
-constructor() {
-super();
-this.attachShadow({ mode: 'open' });
-}
-connectedCallback() {
-this.render();
-}
-render() {
-const style = :host { --primary: #00f2ff; --bg: #0a0a0a; } #widget-root { position: fixed; bottom: 20px; right: 20px; z-index: 1000000; font-family: &#39;Inter&#39;, sans-serif; } #bubble { width: 65px; height: 65px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 20px rgba(0, 242, 255, 0.4); border: none; font-size: 30px; } #window { position: absolute; bottom: 85px; right: 0; width: 350px; height: 500px; background: var(--bg); border: 1.5px solid var(--primary); border-radius: 20px; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.9); } #window.active { display: flex; } #header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 14px; } #messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; color: #fff; } .msg { padding: 10px 14px; border-radius: 15px; font-size: 13px; max-width: 80%; line-height: 1.4; } .bot { background: rgba(255,255,255,0.07); align-self: flex-start; border-left: 3px solid var(--primary); } .user { background: var(--primary); color: #000; align-self: flex-end; font-weight: 700; } .opt { border: 1px solid var(--primary); color: var(--primary); padding: 8px; border-radius: 10px; cursor: pointer; text-align: center; font-size: 12px; margin-top: 5px; transition: 0.2s; } .opt:hover { background: var(--primary); color: #000; } #input-area { padding: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; } input { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; flex: 1; padding: 8px; border-radius: 5px; outline: none; } button { background: var(--primary); border: none; border-radius: 5px; padding: 5px 12px; cursor: pointer; font-weight: bold; } @media (max-width: 450px) { #window { width: 300px; right: -10px; } };
-this.shadowRoot.innerHTML = `
-<style>${style}</style>
+const inf01_w = document.getElementById('inf01_hunter_win');
+const inf01_b = document.getElementById('inf01_hunter_btn');
+const inf01_f = document.getElementById('inf01_field');
+const inf01_c = document.getElementById('inf01_hunter_msgs');
 
-<div id="widget-root">
-<div id="window">
-<div id="header">Surely AI | Hunter Lead</div>
-<div id="messages">
-<div class="msg bot">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
-<div id="opt-container" style="display:flex; flex-direction:column; gap:5px;">
-<div class="opt" onclick="this.getRootNode().host.startFlow('mkt')">Social Media Strategy ($1,500+)</div>
-<div class="opt" onclick="this.getRootNode().host.startFlow('inf')">Digital Infrastructure ($1,800+)</div>
-</div>
-</div>
-<div id="input-area">
-<input type="text" id="field" placeholder="Type here...">
-<button onclick="this.getRootNode().host.sendMsg()">></button>
-</div>
-</div>
-<button id="bubble" onclick="this.getRootNode().host.toggle()">🤖</button>
-</div>
-`;
-}
-toggle() {
-const win = this.shadowRoot.getElementById('window');
-win.classList.toggle('active');
-}
-startFlow(type) {
-this.addMsg(type === 'mkt' ? 'Marketing Strategy' : 'Infrastructure', 'user');
-this.shadowRoot.getElementById('opt-container').style.display = 'none';
-setTimeout(() => {
-const price = type === 'mkt' ? '$1,500/mo' : '$1,800';
-this.addMsg("Great. Our solutions start at " + price + ". Does this align with your budget?", 'bot');
-const div = document.createElement('div');
-div.innerHTML = `<div class="opt" onclick="this.getRootNode().host.lead('y')">Yes, let's talk</div><div class="opt" onclick="this.getRootNode().host.lead('n')">Not yet</div>`;
-this.shadowRoot.getElementById('messages').appendChild(div);
-this.shadowRoot.getElementById('messages').scrollTop = 10000;
-}, 600);
-}
-lead(c) {
-this.addMsg(c === 'y' ? "Yes, let's talk" : "Not yet", 'user');
-setTimeout(() => {
-if(c === 'y') this.addMsg("Perfect. Please type your Email and WhatsApp so Shirley can review your case.", 'bot');
-else this.addMsg("No problem! Explore our site for more tips.", 'bot');
-}, 800);
-}
-sendMsg() {
-const f = this.shadowRoot.getElementById('field');
-if(f.value.trim()) {
-this.addMsg(f.value, 'user');
-f.value = '';
-setTimeout(() => this.addMsg("Thank you! Shirley will review this info shortly.", 'bot'), 1000);
-}
-}
-addMsg(t, side) {
-const m = this.shadowRoot.getElementById('messages');
+inf01_b.addEventListener('click', () => {
+inf01_w.style.display = (inf01_w.style.display === 'none' || inf01_w.style.display === '') ? 'flex' : 'none';
+});
+
+function inf01_add(t, s) {
 const d = document.createElement('div');
-d.className = 'msg ' + side;
+d.className = 'inf01_m ' + (s === 'bot' ? 'inf01_bot' : 'inf01_user');
 d.innerText = t;
-m.appendChild(d);
-m.scrollTop = 10000;
+inf01_c.appendChild(d);
+inf01_c.scrollTop = inf01_c.scrollHeight;
+}
+
+window.inf01_start = (type) => {
+document.getElementById('inf01_opts_box').style.display = 'none';
+const label = (type === 'mkt') ? 'Marketing' : 'Infrastructure';
+inf01_add(label, 'user');
+setTimeout(() => {
+const p = (type === 'mkt') ? '$1,500/mo' : '$1,800';
+inf01_add("Great. Our " + label + " solutions start at " + p + ". Does this align with your budget?", 'bot');
+const div = document.createElement('div');
+div.style.marginTop = "10px";
+div.innerHTML = &lt;div class=&quot;inf01_opt&quot; onclick=&quot;inf01_lead(&#39;y&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;inf01_opt&quot; onclick=&quot;inf01_lead(&#39;n&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+inf01_c.appendChild(div);
+inf01_c.scrollTop = inf01_c.scrollHeight;
+}, 600);
+};
+
+window.inf01_lead = (c) => {
+inf01_add(c === 'y' ? "Yes, let's talk" : "Not yet", 'user');
+setTimeout(() => {
+if(c === 'y') inf01_add("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
+else inf01_add("No problem! Explore our site for more tips.", 'bot');
+}, 800);
+};
+
+function inf01_send() {
+const v = inf01_f.value.trim();
+if(v !== "") {
+inf01_add(v, 'user');
+inf01_f.value = "";
+setTimeout(() => { inf01_add("Thank you! Shirley will review this info and contact you if it's a match.", 'bot'); }, 1000);
 }
 }
-customElements.define('hunter-lead', HunterBot);
-document.getElementById('hunter-bunker').innerHTML = '<hunter-lead></hunter-lead>';
+
+inf01_f.addEventListener('keypress', (e) => { if(e.key === 'Enter') inf01_send(); });
 </script>
+
 </body>
 </html>
