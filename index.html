@@ -173,96 +173,115 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* HUNTER LEAD UI - FIXED POSITIONS /
-#chat-widget {
+/* BURBUJA DE CHAT - BLINDAJE DE INF01 */
+#chat-widget-container {
 position: fixed !important;
 bottom: 20px !important;
 right: 20px !important;
-z-index: 10000 !important;
-width: 70px !important;
-height: 70px !important;
+z-index: 99999 !important;
+width: auto !important;
+height: auto !important;
+display: block !important;
 }
 #chat-button {
-width: 70px !important;
-height: 70px !important;
-background: var(--primary);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-border: none;
+width: 60px !important;
+height: 60px !important;
+background: var(--primary) !important;
+border-radius: 50% !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+cursor: pointer !important;
+box-shadow: 0 4px 15px rgba(0, 242, 255, 0.4) !important;
+margin-left: auto !important;
 }
 #chat-window {
-position: fixed !important;
-bottom: 100px !important;
-right: 20px !important;
 width: 350px !important;
-max-width: 90vw !important;
 height: 500px !important;
-max-height: 70vh !important;
 background: #0a0a0a !important;
 border: 1px solid var(--primary) !important;
 border-radius: 20px !important;
-display: none; / Inicia oculto */
-flex-direction: column;
-overflow: hidden;
-box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-z-index: 10001 !important;
+display: none;
+flex-direction: column !important;
+margin-bottom: 15px !important;
+overflow: hidden !important;
+box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+.chat-active {
+display: flex !important;
 }
 #chat-header {
-background: var(--primary);
-color: #000;
-padding: 15px;
-font-weight: 800;
-text-align: left;
-font-size: 0.9rem;
+background: var(--primary) !important;
+color: #000 !important;
+padding: 15px !important;
+font-weight: 800 !important;
+font-size: 0.9rem !important;
 }
 #chat-messages {
-flex: 1;
-padding: 20px;
-overflow-y: auto;
-display: flex;
-flex-direction: column;
-gap: 15px;
+flex: 1 !important;
+padding: 15px !important;
+overflow-y: auto !important;
+display: flex !important;
+flex-direction: column !important;
+gap: 12px !important;
 }
 .msg {
-padding: 10px 15px;
-border-radius: 15px;
-font-size: 0.9rem;
-max-width: 80%;
+padding: 10px 14px !important;
+border-radius: 15px !important;
+font-size: 0.85rem !important;
+max-width: 85% !important;
+line-height: 1.4 !important;
 }
-.bot-msg { background: rgba(255,255,255,0.05); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
-.user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 600; }
+.bot-msg {
+background: rgba(255,255,255,0.08) !important;
+color: #fff !important;
+align-self: flex-start !important;
+border-left: 3px solid var(--primary) !important;
+}
+.user-msg {
+background: var(--primary) !important;
+color: #000 !important;
+align-self: flex-end !important;
+font-weight: 600 !important;
+}
 #chat-input-area {
-padding: 15px;
-border-top: 1px solid rgba(255,255,255,0.1);
-display: flex;
-gap: 10px;
+padding: 12px !important;
+border-top: 1px solid rgba(255,255,255,0.1) !important;
+display: flex !important;
+gap: 8px !important;
 }
 #chat-input {
-background: transparent;
-border: 1px solid rgba(255,255,255,0.2);
-color: #fff;
-padding: 8px;
-border-radius: 5px;
-flex: 1;
-outline: none;
+background: transparent !important;
+border: 1px solid rgba(255,255,255,0.2) !important;
+color: #fff !important;
+padding: 8px !important;
+border-radius: 8px !important;
+flex: 1 !important;
+outline: none !important;
+font-size: 0.9rem !important;
 }
 .chat-option {
-background: transparent;
-border: 1px solid var(--primary);
-color: var(--primary);
-padding: 8px 10px;
-border-radius: 20px;
-cursor: pointer;
-font-size: 0.8rem;
-margin-bottom: 5px;
-text-align: center;
-transition: 0.3s;
+background: transparent !important;
+border: 1px solid var(--primary) !important;
+color: var(--primary) !important;
+padding: 8px !important;
+border-radius: 10px !important;
+cursor: pointer !important;
+font-size: 0.8rem !important;
+text-align: center !important;
+transition: 0.2s !important;
 }
-.chat-option:hover { background: var(--primary); color: #000; }
+.chat-option:hover {
+background: var(--primary) !important;
+color: #000 !important;
+}
+
+@media (max-width: 400px) {
+#chat-window {
+width: 280px !important;
+height: 400px !important;
+}
+}
 </style>
 
 </head>
@@ -313,76 +332,96 @@ transition: 0.3s;
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
+<div id="chat-widget-container">
 <div id="chat-window">
 <div id="chat-header">Surely Bot | AI Assistant</div>
 <div id="chat-messages">
 <div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
-<div id="options-container" style="display:flex; flex-direction:column; gap:5px;">
-<div class="chat-option" onclick="handleSelect('Marketing')">Social Media Strategy ($1,500+)</div>
-<div class="chat-option" onclick="handleSelect('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
+<div id="options-container" style="display:flex; flex-direction:column; gap:8px;">
+<div class="chat-option" onclick="handleOption('Marketing')">Social Media Strategy ($1,500+)</div>
+<div class="chat-option" onclick="handleOption('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
 </div>
 </div>
 <div id="chat-input-area">
 <input type="text" id="chat-input" placeholder="Type a message...">
-<button onclick="handleSend()" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 10px; color:#000; font-weight:bold;">></button>
+<button id="send-btn" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 12px; font-weight:bold;">></button>
 </div>
 </div>
-
-<div id="chat-widget">
-<div id="chat-button" onclick="handleToggle()">
-<span style="font-size:30px;">🤖</span>
+<div id="chat-button">
+<span style="font-size:28px;">🤖</span>
 </div>
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+const btn = document.getElementById('chat-button');
 const win = document.getElementById('chat-window');
 const input = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
 const messages = document.getElementById('chat-messages');
 
-function handleToggle() {
-if (win.style.display === 'none' || win.style.display === '') {
-win.style.display = 'flex';
-} else {
-win.style.display = 'none';
-}
-}
+// ABRIR/CERRAR BURBUJA
+btn.addEventListener('click', () => {
+win.classList.toggle('chat-active');
+});
 
-function handleSelect(option) {
+// OPCIONES DE VENTA
+window.handleOption = (option) => {
 addMsg(option, 'user');
-document.getElementById('options-container').style.display = 'none';
+const opts = document.getElementById('options-container');
+if(opts) opts.style.display = 'none';
 
 if(option === 'Marketing') {
 setTimeout(() => {
-addMsg("Excellent. Our joy-focused strategies start at $1,500/mo. Does this align with your budget?", 'bot');
+addMsg("Perfect! Our strategy packages start at $1,500/mo. Does this align with your budget?", 'bot');
 showBudget();
 }, 600);
 } else {
 setTimeout(() => {
-addMsg("Infrastructure is key. Our elite setups and AI agents start at $1,800. Is this within your plans?", 'bot');
+addMsg("Infrastructure is key. Our elite AI and security setups start at $1,800. Is this within your plans?", 'bot');
 showBudget();
 }, 600);
 }
-}
+};
 
 function showBudget() {
 const div = document.createElement('div');
+div.style.marginTop = "10px";
+div.style.display = "flex";
+div.style.flexDirection = "column";
+div.style.gap = "8px";
 div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;handleLead(&#39;Yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt; &lt;div class=&quot;chat-option&quot; onclick=&quot;handleLead(&#39;No&#39;)&quot;&gt;Not yet&lt;/div&gt;;
 messages.appendChild(div);
 messages.scrollTop = messages.scrollHeight;
 }
 
-function handleLead(choice) {
+window.handleLead = (choice) => {
 addMsg(choice, 'user');
 if(choice === 'Yes') {
 setTimeout(() => {
-addMsg("Perfect. To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
+addMsg("Great! To have Shirley review your case, please type your Email and WhatsApp below.", 'bot');
 }, 800);
 } else {
 setTimeout(() => {
-addMsg("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
+addMsg("No problem! Feel free to explore our site for more info.", 'bot');
 }, 800);
 }
+};
+
+// ENVIAR MENSAJES
+function executeSend() {
+const val = input.value.trim();
+if(val !== "") {
+addMsg(val, 'user');
+input.value = "";
+setTimeout(() => {
+addMsg("Thank you! Shirley will review this info and contact you if it's a match.", 'bot');
+}, 1000);
 }
+}
+
+sendBtn.addEventListener('click', executeSend);
+input.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSend(); });
 
 function addMsg(text, side) {
 const div = document.createElement('div');
@@ -391,20 +430,6 @@ div.innerText = text;
 messages.appendChild(div);
 messages.scrollTop = messages.scrollHeight;
 }
-
-function handleSend() {
-if(input.value.trim() !== "") {
-addMsg(input.value, 'user');
-input.value = "";
-setTimeout(() => {
-addMsg("Thank you! Shirley will review this. If your project is a match, you'll receive a link shortly.", 'bot');
-}, 1000);
-}
-}
-
-// Enter key support
-input.addEventListener('keypress', function (e) {
-if (e.key === 'Enter') handleSend();
 });
 </script>
 
