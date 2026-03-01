@@ -42,9 +42,7 @@ margin: 0 auto;
 padding: 100px 20px;
 text-align: center;
 }
-.brand {
-margin-bottom: 80px;
-}
+.brand { margin-bottom: 80px; }
 .brand h1 {
 font-family: 'Playfair Display', serif;
 font-size: clamp(3.5rem, 12vw, 6rem);
@@ -85,7 +83,6 @@ opacity: 0.6;
 .hero-box {
 background: rgba(0, 242, 255, 0.04);
 backdrop-filter: blur(30px);
--webkit-backdrop-filter: blur(30px);
 border: 2px solid var(--primary);
 padding: 80px 40px;
 border-radius: 40px;
@@ -101,7 +98,6 @@ margin: 0;
 }
 .about-box {
 background: var(--glass);
-backdrop-filter: blur(20px);
 border: 1px solid rgba(0, 242, 255, 0.12);
 padding: 50px 40px;
 border-radius: 32px;
@@ -124,60 +120,34 @@ text-align: left;
 background: rgba(255, 255, 255, 0.01);
 padding: 50px 40px;
 border-radius: 28px;
-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 border: 1px solid rgba(255, 255, 255, 0.1);
+transition: 0.4s;
 }
-.marketing-card:hover {
-border-color: var(--accent) !important;
-background: rgba(255, 140, 0, 0.04);
-transform: translateY(-12px);
-box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
-}
-.infra-card:hover {
-border-color: var(--primary) !important;
-background: rgba(0, 242, 255, 0.04);
-transform: translateY(-12px);
-box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
-}
-.service-card h3 {
-color: #fff;
-font-size: 1.5rem;
-margin-bottom: 20px;
-font-weight: 800;
-}
-.service-card p {
-margin: 0;
-color: var(--text-dim);
-font-size: 1.05rem;
-}
+.marketing-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 0 30px rgba(255, 140, 0, 0.3); }
+.infra-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 0 30px rgba(0, 242, 255, 0.3); }
+.service-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 20px; font-weight: 800; }
+.service-card p { color: var(--text-dim); font-size: 1.05rem; margin: 0; }
 .cta {
 display: inline-block;
 margin-top: 100px;
 padding: 24px 80px;
-background: transparent;
 color: var(--primary);
 border: 2px solid var(--primary);
 text-decoration: none;
 font-weight: 800;
 border-radius: 100px;
-transition: 0.3s;
 text-transform: uppercase;
 letter-spacing: 2px;
+transition: 0.3s;
 }
-.cta:hover {
-background: var(--accent);
-border-color: var(--accent);
-color: #000;
-box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
-transform: scale(1.05);
-}
+.cta:hover { background: var(--accent); border-color: var(--accent); color: #000; box-shadow: 0 0 40px rgba(255, 140, 0, 0.5); }
 
-/* HUNTER LEAD UI - AISLAMAMIENTO SENIOR */
-#h-root {
+/* BLINDAJE AISLADO DEL CHAT - PROTOCOLO SENIOR */
+#bot-anchor {
 position: fixed !important;
 bottom: 20px !important;
 right: 20px !important;
-z-index: 100000 !important;
+z-index: 1000000 !important;
 width: 350px !important;
 max-width: 90vw !important;
 display: flex !important;
@@ -185,7 +155,7 @@ flex-direction: column !important;
 align-items: flex-end !important;
 pointer-events: none !important;
 }
-#h-win {
+#bot-win {
 width: 350px !important;
 height: 500px !important;
 background: #0a0a0a !important;
@@ -194,11 +164,11 @@ border-radius: 20px !important;
 margin-bottom: 15px !important;
 display: none;
 flex-direction: column !important;
-overflow: hidden !important;
-box-shadow: 0 20px 50px rgba(0,0,0,0.9) !important;
+box-shadow: 0 20px 60px rgba(0,0,0,0.9) !important;
 pointer-events: auto !important;
+overflow: hidden !important;
 }
-#h-bubble {
+#bot-bubble {
 width: 65px !important;
 height: 65px !important;
 background: var(--primary) !important;
@@ -210,23 +180,24 @@ cursor: pointer !important;
 box-shadow: 0 5px 20px rgba(0, 242, 255, 0.5) !important;
 pointer-events: auto !important;
 }
-#h-msgs {
+#bot-msgs {
 flex: 1 !important;
 padding: 15px !important;
 overflow-y: auto !important;
 display: flex !important;
 flex-direction: column !important;
-gap: 12px !important;
+gap: 10px !important;
 }
-.h-msg {
+.b-msg {
 padding: 10px 14px !important;
 border-radius: 15px !important;
 font-size: 0.85rem !important;
 max-width: 80% !important;
+line-height: 1.4 !important;
 }
-.h-bot { background: rgba(255,255,255,0.06) !important; color: #fff !important; align-self: flex-start !important; border-left: 3px solid var(--primary) !important; }
-.h-user { background: var(--primary) !important; color: #000 !important; align-self: flex-end !important; font-weight: 700 !important; }
-.h-opt {
+.b-bot { background: rgba(255,255,255,0.06) !important; color: #fff !important; align-self: flex-start !important; border-left: 3px solid var(--primary) !important; }
+.b-user { background: var(--primary) !important; color: #000 !important; align-self: flex-end !important; font-weight: 700 !important; }
+.b-opt {
 border: 1px solid var(--primary) !important;
 color: var(--primary) !important;
 padding: 10px !important;
@@ -236,26 +207,12 @@ text-align: center !important;
 font-size: 0.8rem !important;
 margin-top: 8px !important;
 }
-.h-opt:hover { background: var(--primary) !important; color: #000 !important; }
-#h-input-bar {
-padding: 15px !important;
-border-top: 1px solid rgba(255,255,255,0.1) !important;
-display: flex !important;
-gap: 10px !important;
-}
-#h-field {
-background: transparent !important;
-border: 1px solid rgba(255,255,255,0.2) !important;
-color: #fff !important;
-flex: 1 !important;
-padding: 8px !important;
-border-radius: 5px !important;
-outline: none !important;
-}
-@media (max-width: 768px) {
-.container { padding: 60px 20px; }
-.hero-box { padding: 50px 25px; }
-#h-root { width: 300px; }
+.b-input-area { padding: 15px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; display: flex !important; gap: 8px !important; }
+.b-field { background: transparent !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #fff !important; flex: 1 !important; padding: 8px !important; border-radius: 5px !important; outline: none !important; }
+
+@media (max-width: 400px) {
+#bot-anchor { width: 300px !important; }
+#bot-win { width: 300px !important; height: 450px !important; }
 }
 </style>
 
@@ -307,50 +264,52 @@ outline: none !important;
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
-<div id="h-root">
-<div id="h-win">
-<div style="background:var(--primary);color:#000;padding:15px;font-weight:800;font-size:0.9rem;">Surely AI | Lead Hunter</div>
-<div id="h-msgs">
-<div class="h-msg h-bot">Hi! I'm Shirley's AI Assistant. How can I help you today?</div>
-<div id="h-options-box" style="display:flex;flex-direction:column;gap:5px;">
-<div class="h-opt" onclick="flow('mkt')">Social Media Strategy ($1,500+)</div>
-<div class="h-opt" onclick="flow('inf')">Digital Infrastructure ($1,800+)</div>
+<div id="bot-anchor">
+<div id="bot-win">
+<div style="background:var(--primary);color:#000;padding:15px;font-weight:800;font-size:0.9rem;">Surely AI | Hunter Lead</div>
+<div id="bot-msgs">
+<div class="b-msg b-bot">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
+<div id="b-opts" style="display:flex;flex-direction:column;gap:5px;">
+<div class="b-opt" onclick="flow('mkt')">Social Media Strategy ($1,500+)</div>
+<div class="b-opt" onclick="flow('inf')">Digital Infrastructure ($1,800+)</div>
 </div>
 </div>
-<div id="h-input-bar">
-<input type="text" id="h-field" placeholder="Type here...">
-<button onclick="hSend()" style="background:var(--primary);border:none;border-radius:5px;padding:5px 12px;cursor:pointer;font-weight:bold;">></button>
+<div class="b-input-area">
+<input type="text" id="b-field" class="b-field" placeholder="Type here...">
+<button onclick="send()" style="background:var(--primary);border:none;border-radius:5px;padding:5px 12px;cursor:pointer;font-weight:bold;">></button>
 </div>
 </div>
-<div id="h-bubble"><span style="font-size:30px;">🤖</span></div>
+<div id="bot-bubble">
+<span style="font-size:30px;">🤖</span>
+</div>
 </div>
 
 <script>
-const hWin = document.getElementById('h-win');
-const hBubble = document.getElementById('h-bubble');
-const hField = document.getElementById('h-field');
-const hChat = document.getElementById('h-msgs');
+const win = document.getElementById('bot-win');
+const bubble = document.getElementById('bot-bubble');
+const field = document.getElementById('b-field');
+const chat = document.getElementById('bot-msgs');
 
-hBubble.addEventListener('click', () => {
-if (hWin.style.display === 'none' || hWin.style.display === '') {
-hWin.style.display = 'flex';
+bubble.addEventListener('click', () => {
+if (win.style.display === 'none' || win.style.display === '') {
+win.style.display = 'flex';
 } else {
-hWin.style.display = 'none';
+win.style.display = 'none';
 }
 });
 
-window.flow = (type) => {
-document.getElementById('h-options-box').style.display = 'none';
-const label = (type === 'mkt') ? 'Marketing Strategy' : 'Infrastructure';
+window.flow = (t) => {
+document.getElementById('b-opts').style.display = 'none';
+const label = (t === 'mkt') ? 'Marketing' : 'Infrastructure';
 add(label, 'user');
 setTimeout(() => {
-const price = (type === 'mkt') ? '$1,500/mo' : '$1,800';
-add("Great! Our " + label + " solutions start at " + price + ". Does this align with your budget?", 'bot');
+const price = (t === 'mkt') ? '$1,500/mo' : '$1,800';
+add("Great. Our " + label + " solutions start at " + price + ". Does this align with your budget?", 'bot');
 const div = document.createElement('div');
 div.style.marginTop = "10px";
-div.innerHTML = &lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;y&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;n&#39;)&quot;&gt;Not yet&lt;/div&gt;;
-hChat.appendChild(div);
-hChat.scrollTop = hChat.scrollHeight;
+div.innerHTML = &lt;div class=&quot;b-opt&quot; onclick=&quot;lead(&#39;y&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;n&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+chat.appendChild(div);
+chat.scrollTop = chat.scrollHeight;
 }, 600);
 };
 
@@ -358,27 +317,27 @@ window.lead = (choice) => {
 add(choice === 'y' ? "Yes, let's talk" : "Not yet", 'user');
 setTimeout(() => {
 if(choice === 'y') add("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
-else add("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
+else add("No problem! Follow us for free tips.", 'bot');
 }, 800);
 };
 
-function hSend() {
-const v = hField.value.trim();
+function send() {
+const v = field.value.trim();
 if(v !== "") {
 add(v, 'user');
-hField.value = "";
-setTimeout(() => { add("Thank you! Shirley will review this info and contact you shortly if it's a match.", 'bot'); }, 1000);
+field.value = "";
+setTimeout(() => { add("Thank you. We've received your info. Shirley will contact you shortly if it's a match.", 'bot'); }, 1000);
 }
 }
 
 function add(t, s) {
 const d = document.createElement('div');
-d.className = 'h-msg ' + (s === 'bot' ? 'h-bot' : 'h-user');
+d.className = 'b-msg ' + (s === 'bot' ? 'b-bot' : 'b-user');
 d.innerText = t;
-hChat.appendChild(d);
-hChat.scrollTop = hChat.scrollHeight;
+chat.appendChild(d);
+chat.scrollTop = chat.scrollHeight;
 }
-hField.addEventListener('keypress', (e) => { if(e.key === 'Enter') hSend(); });
+field.addEventListener('keypress', (e) => { if(e.key === 'Enter') send(); });
 </script>
 
 </body>
