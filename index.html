@@ -173,16 +173,18 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* CHAT WIDGET - ESTRUCTURA BLINDADA /
+/* HUNTER LEAD UI - FIXED POSITIONS /
 #chat-widget {
-position: fixed;
-bottom: 30px;
-right: 30px;
-z-index: 9999 !important;
+position: fixed !important;
+bottom: 20px !important;
+right: 20px !important;
+z-index: 10000 !important;
+width: 70px !important;
+height: 70px !important;
 }
 #chat-button {
-width: 70px;
-height: 70px;
+width: 70px !important;
+height: 70px !important;
 background: var(--primary);
 border-radius: 50%;
 display: flex;
@@ -190,38 +192,77 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+border: none;
 }
 #chat-window {
-position: absolute;
-bottom: 90px;
-right: 0;
-width: 350px;
-height: 500px;
-background: #0a0a0a;
-border: 1px solid var(--primary);
-border-radius: 20px;
-display: none;
+position: fixed !important;
+bottom: 100px !important;
+right: 20px !important;
+width: 350px !important;
+max-width: 90vw !important;
+height: 500px !important;
+max-height: 70vh !important;
+background: #0a0a0a !important;
+border: 1px solid var(--primary) !important;
+border-radius: 20px !important;
+display: none; / Inicia oculto */
 flex-direction: column;
 overflow: hidden;
 box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+z-index: 10001 !important;
 }
-/ CLASE MAESTRA DE APERTURA */
-.chat-active {
-display: flex !important;
+#chat-header {
+background: var(--primary);
+color: #000;
+padding: 15px;
+font-weight: 800;
+text-align: left;
+font-size: 0.9rem;
 }
-#chat-header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 0.9rem; }
-#chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-.msg { padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; max-width: 80%; }
+#chat-messages {
+flex: 1;
+padding: 20px;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+.msg {
+padding: 10px 15px;
+border-radius: 15px;
+font-size: 0.9rem;
+max-width: 80%;
+}
 .bot-msg { background: rgba(255,255,255,0.05); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
 .user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 600; }
-#chat-input-area { padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 10px; }
-#chat-input { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 5px; flex: 1; }
-.chat-option { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 8px 10px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-bottom: 5px; text-align: center; }
-.chat-option:hover { background: var(--primary); color: #000; }
-
-@media (max-width: 768px) {
-#chat-window { width: 300px; right: -10px; }
+#chat-input-area {
+padding: 15px;
+border-top: 1px solid rgba(255,255,255,0.1);
+display: flex;
+gap: 10px;
 }
+#chat-input {
+background: transparent;
+border: 1px solid rgba(255,255,255,0.2);
+color: #fff;
+padding: 8px;
+border-radius: 5px;
+flex: 1;
+outline: none;
+}
+.chat-option {
+background: transparent;
+border: 1px solid var(--primary);
+color: var(--primary);
+padding: 8px 10px;
+border-radius: 20px;
+cursor: pointer;
+font-size: 0.8rem;
+margin-bottom: 5px;
+text-align: center;
+transition: 0.3s;
+}
+.chat-option:hover { background: var(--primary); color: #000; }
 </style>
 
 </head>
@@ -272,106 +313,98 @@ display: flex !important;
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
-<div id="chat-widget">
 <div id="chat-window">
 <div id="chat-header">Surely Bot | AI Assistant</div>
 <div id="chat-messages">
 <div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
 <div id="options-container" style="display:flex; flex-direction:column; gap:5px;">
-<div class="chat-option" onclick="handleOption('Marketing')">Social Media Strategy ($1,500+)</div>
-<div class="chat-option" onclick="handleOption('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
+<div class="chat-option" onclick="handleSelect('Marketing')">Social Media Strategy ($1,500+)</div>
+<div class="chat-option" onclick="handleSelect('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
 </div>
 </div>
 <div id="chat-input-area">
 <input type="text" id="chat-input" placeholder="Type a message...">
-<button id="send-btn" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">></button>
+<button onclick="handleSend()" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 10px; color:#000; font-weight:bold;">></button>
 </div>
 </div>
-<div id="chat-button">
+
+<div id="chat-widget">
+<div id="chat-button" onclick="handleToggle()">
 <span style="font-size:30px;">🤖</span>
 </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-const btn = document.getElementById('chat-button');
 const win = document.getElementById('chat-window');
 const input = document.getElementById('chat-input');
-const sendBtn = document.getElementById('send-btn');
+const messages = document.getElementById('chat-messages');
 
-// APERTURA BLINDADA POR CLASE
-btn.addEventListener('click', () => {
-win.classList.toggle('chat-active');
-});
+function handleToggle() {
+if (win.style.display === 'none' || win.style.display === '') {
+win.style.display = 'flex';
+} else {
+win.style.display = 'none';
+}
+}
 
-// ENVÍO POR BOTÓN
-sendBtn.addEventListener('click', () => {
-executeSend();
-});
-
-// ENVÍO POR TECLA ENTER
-input.addEventListener('keypress', (e) => {
-if (e.key === 'Enter') executeSend();
-});
-
-window.handleOption = (option) => {
-addMessage(option, 'user');
-const opts = document.getElementById('options-container');
-if(opts) opts.style.display = 'none';
+function handleSelect(option) {
+addMsg(option, 'user');
+document.getElementById('options-container').style.display = 'none';
 
 if(option === 'Marketing') {
 setTimeout(() => {
-addMessage("Excellent. Our joy-focused strategies start at $1,500/mo. Does this align with your budget?", 'bot');
-showBudgetOptions();
+addMsg("Excellent. Our joy-focused strategies start at $1,500/mo. Does this align with your budget?", 'bot');
+showBudget();
 }, 600);
 } else {
 setTimeout(() => {
-addMessage("Infrastructure is key. Our elite setups and AI agents start at $1,800. Is this within your plans?", 'bot');
-showBudgetOptions();
+addMsg("Infrastructure is key. Our elite setups and AI agents start at $1,800. Is this within your plans?", 'bot');
+showBudget();
 }, 600);
 }
-};
+}
 
-function showBudgetOptions() {
-const container = document.getElementById('chat-messages');
+function showBudget() {
 const div = document.createElement('div');
-div.style.marginTop = "10px";
-div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Yes, let\\&#39;s talk&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt; &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Not yet&#39;)&quot;&gt;Not yet&lt;/div&gt;;
-container.appendChild(div);
-container.scrollTop = container.scrollHeight;
+div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;handleLead(&#39;Yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt; &lt;div class=&quot;chat-option&quot; onclick=&quot;handleLead(&#39;No&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+messages.appendChild(div);
+messages.scrollTop = messages.scrollHeight;
 }
 
-window.captureLead = (choice) => {
-addMessage(choice, 'user');
-if(choice.includes('Yes')) {
+function handleLead(choice) {
+addMsg(choice, 'user');
+if(choice === 'Yes') {
 setTimeout(() => {
-addMessage("Perfect. To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
+addMsg("Perfect. To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
 }, 800);
 } else {
 setTimeout(() => {
-addMessage("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
+addMsg("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
 }, 800);
 }
-};
+}
 
-function executeSend() {
+function addMsg(text, side) {
+const div = document.createElement('div');
+div.className = 'msg ' + (side === 'bot' ? 'bot-msg' : 'user-msg');
+div.innerText = text;
+messages.appendChild(div);
+messages.scrollTop = messages.scrollHeight;
+}
+
+function handleSend() {
 if(input.value.trim() !== "") {
-addMessage(input.value, 'user');
+addMsg(input.value, 'user');
 input.value = "";
 setTimeout(() => {
-addMessage("Thank you! Shirley will review this. If your project is a match, you'll receive a link shortly.", 'bot');
+addMsg("Thank you! Shirley will review this. If your project is a match, you'll receive a link shortly.", 'bot');
 }, 1000);
 }
 }
 
-function addMessage(text, side) {
-const container = document.getElementById('chat-messages');
-const div = document.createElement('div');
-div.className = 'msg ' + (side === 'bot' ? 'bot-msg' : 'user-msg');
-div.innerText = text;
-container.appendChild(div);
-container.scrollTop = container.scrollHeight;
-}
+// Enter key support
+input.addEventListener('keypress', function (e) {
+if (e.key === 'Enter') handleSend();
 });
 </script>
 
