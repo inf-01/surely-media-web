@@ -67,19 +67,17 @@ gtag('config', 'G-4JLND77F73');
 <div id="h-header">Surely AI | Lead Hunter</div>
 <div id="h-msgs">
 <div class="h-msg h-bot">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
-<div id="h-opts" style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+<div id="h-opts">
 <div class="h-opt" onclick="flow('mkt')">Social Media Strategy ($1,500+)</div>
 <div class="h-opt" onclick="flow('inf')">Digital Infrastructure ($1,800+)</div>
 </div>
 </div>
 <div id="h-input-area">
 <input type="text" id="h-field" placeholder="Type here...">
-<button onclick="hSend()" style="background:var(--primary);border:none;border-radius:5px;padding:5px 12px;cursor:pointer;font-weight:bold;">></button>
+<button onclick="hSend()">></button>
 </div>
 </div>
-<div id="h-bubble">
-<span style="font-size:30px;">🤖</span>
-</div>
+<div id="h-bubble"><span>🤖</span></div>
 </div>
 
 <script>
@@ -111,7 +109,7 @@ window.lead = (c) => {
 add(c === 'y' ? "Yes, let's talk" : "Not yet", 'user');
 setTimeout(() => {
 if(c === 'y') add("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
-else add("No problem! Explore our site or follow us for free tips.", 'bot');
+else add("No problem! Feel free to explore our site for more tips.", 'bot');
 }, 800);
 };
 
@@ -120,7 +118,7 @@ const v = hField.value.trim();
 if(v !== "") {
 add(v, 'user');
 hField.value = "";
-setTimeout(() => { add("Thank you. Shirley will review this info and contact you if it's a match.", 'bot'); }, 1000);
+setTimeout(() => { add("Thank you. Shirley will review this info and contact you shortly.", 'bot'); }, 1000);
 }
 }
 
