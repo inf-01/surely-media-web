@@ -173,115 +173,50 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* BURBUJA DE CHAT - BLINDAJE DE INF01 */
-#chat-widget-container {
+/* WIDGET BLINDADO - SEPARACIÓN FÍSICA /
+#chat-btn-master {
 position: fixed !important;
 bottom: 20px !important;
 right: 20px !important;
-z-index: 99999 !important;
-width: auto !important;
-height: auto !important;
-display: block !important;
-}
-#chat-button {
-width: 60px !important;
-height: 60px !important;
+width: 65px !important;
+height: 65px !important;
 background: var(--primary) !important;
 border-radius: 50% !important;
 display: flex !important;
 align-items: center !important;
 justify-content: center !important;
 cursor: pointer !important;
-box-shadow: 0 4px 15px rgba(0, 242, 255, 0.4) !important;
-margin-left: auto !important;
+z-index: 10000 !important;
+box-shadow: 0 4px 20px rgba(0, 242, 255, 0.4) !important;
+border: none !important;
 }
-#chat-window {
+#chat-win-master {
+position: fixed !important;
+bottom: 100px !important;
+right: 20px !important;
 width: 350px !important;
+max-width: 85vw !important;
 height: 500px !important;
 background: #0a0a0a !important;
-border: 1px solid var(--primary) !important;
+border: 1.5px solid var(--primary) !important;
 border-radius: 20px !important;
-display: none;
+display: none; / Inicia oculto */
 flex-direction: column !important;
-margin-bottom: 15px !important;
+z-index: 10001 !important;
+box-shadow: 0 20px 50px rgba(0,0,0,0.9) !important;
 overflow: hidden !important;
-box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
 }
-.chat-active {
-display: flex !important;
-}
-#chat-header {
-background: var(--primary) !important;
-color: #000 !important;
-padding: 15px !important;
-font-weight: 800 !important;
-font-size: 0.9rem !important;
-}
-#chat-messages {
-flex: 1 !important;
-padding: 15px !important;
-overflow-y: auto !important;
-display: flex !important;
-flex-direction: column !important;
-gap: 12px !important;
-}
-.msg {
-padding: 10px 14px !important;
-border-radius: 15px !important;
-font-size: 0.85rem !important;
-max-width: 85% !important;
-line-height: 1.4 !important;
-}
-.bot-msg {
-background: rgba(255,255,255,0.08) !important;
-color: #fff !important;
-align-self: flex-start !important;
-border-left: 3px solid var(--primary) !important;
-}
-.user-msg {
-background: var(--primary) !important;
-color: #000 !important;
-align-self: flex-end !important;
-font-weight: 600 !important;
-}
-#chat-input-area {
-padding: 12px !important;
-border-top: 1px solid rgba(255,255,255,0.1) !important;
-display: flex !important;
-gap: 8px !important;
-}
-#chat-input {
-background: transparent !important;
-border: 1px solid rgba(255,255,255,0.2) !important;
-color: #fff !important;
-padding: 8px !important;
-border-radius: 8px !important;
-flex: 1 !important;
-outline: none !important;
-font-size: 0.9rem !important;
-}
-.chat-option {
-background: transparent !important;
-border: 1px solid var(--primary) !important;
-color: var(--primary) !important;
-padding: 8px !important;
-border-radius: 10px !important;
-cursor: pointer !important;
-font-size: 0.8rem !important;
-text-align: center !important;
-transition: 0.2s !important;
-}
-.chat-option:hover {
-background: var(--primary) !important;
-color: #000 !important;
-}
+.bot-active { display: flex !important; }
 
-@media (max-width: 400px) {
-#chat-window {
-width: 280px !important;
-height: 400px !important;
-}
-}
+#chat-header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 0.9rem; }
+#chat-msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.msg { padding: 10px 14px; border-radius: 15px; font-size: 0.85rem; max-width: 80%; line-height: 1.4; }
+.bot-msg { background: rgba(255,255,255,0.07); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
+.user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 600; }
+.chat-opt { border: 1px solid var(--primary); color: var(--primary); padding: 8px; border-radius: 10px; cursor: pointer; text-align: center; font-size: 0.8rem; margin-bottom: 5px; }
+.chat-opt:hover { background: var(--primary); color: #000; }
+#chat-input-box { padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
+#chat-field { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 5px; flex: 1; outline: none; }
 </style>
 
 </head>
@@ -332,105 +267,87 @@ height: 400px !important;
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
-<div id="chat-widget-container">
-<div id="chat-window">
+<div id="chat-win-master">
 <div id="chat-header">Surely Bot | AI Assistant</div>
-<div id="chat-messages">
+<div id="chat-msgs">
 <div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
-<div id="options-container" style="display:flex; flex-direction:column; gap:8px;">
-<div class="chat-option" onclick="handleOption('Marketing')">Social Media Strategy ($1,500+)</div>
-<div class="chat-option" onclick="handleOption('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
+<div id="opts-box" style="display:flex; flex-direction:column; gap:5px; margin-top:10px;">
+<div class="chat-opt" onclick="flow('mkt')">Social Media Strategy ($1,500+)</div>
+<div class="chat-opt" onclick="flow('infra')">Digital Infrastructure/AI ($1,800+)</div>
 </div>
 </div>
-<div id="chat-input-area">
-<input type="text" id="chat-input" placeholder="Type a message...">
-<button id="send-btn" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 12px; font-weight:bold;">></button>
+<div id="chat-input-box">
+<input type="text" id="chat-field" placeholder="Type here...">
+<button onclick="pushMsg()" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 12px; font-weight:bold;">></button>
 </div>
 </div>
-<div id="chat-button">
+
+<div id="chat-btn-master">
 <span style="font-size:28px;">🤖</span>
-</div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-const btn = document.getElementById('chat-button');
-const win = document.getElementById('chat-window');
-const input = document.getElementById('chat-input');
-const sendBtn = document.getElementById('send-btn');
-const messages = document.getElementById('chat-messages');
+// ELEMENTOS
+const btn = document.getElementById('chat-btn-master');
+const win = document.getElementById('chat-win-master');
+const field = document.getElementById('chat-field');
+const chat = document.getElementById('chat-msgs');
 
-// ABRIR/CERRAR BURBUJA
+// TOGGLE BLINDADO
 btn.addEventListener('click', () => {
-win.classList.toggle('chat-active');
+if (win.style.display === 'none' || win.style.display === '') {
+win.style.display = 'flex';
+} else {
+win.style.display = 'none';
+}
 });
 
-// OPCIONES DE VENTA
-window.handleOption = (option) => {
-addMsg(option, 'user');
-const opts = document.getElementById('options-container');
-if(opts) opts.style.display = 'none';
+// FLUJO LÓGICO
+window.flow = (type) => {
+document.getElementById('opts-box').style.display = 'none';
+const label = (type === 'mkt') ? 'Social Media Strategy' : 'Digital Infrastructure';
+addMsg(label, 'user');
 
-if(option === 'Marketing') {
 setTimeout(() => {
-addMsg("Perfect! Our strategy packages start at $1,500/mo. Does this align with your budget?", 'bot');
-showBudget();
-}, 600);
-} else {
-setTimeout(() => {
-addMsg("Infrastructure is key. Our elite AI and security setups start at $1,800. Is this within your plans?", 'bot');
-showBudget();
-}, 600);
-}
-};
-
-function showBudget() {
+const price = (type === 'mkt') ? '$1,500/mo' : '$1,800';
+addMsg("Great! Our " + label + " solutions start at " + price + ". Does this align with your budget?", 'bot');
 const div = document.createElement('div');
 div.style.marginTop = "10px";
-div.style.display = "flex";
-div.style.flexDirection = "column";
-div.style.gap = "8px";
-div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;handleLead(&#39;Yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt; &lt;div class=&quot;chat-option&quot; onclick=&quot;handleLead(&#39;No&#39;)&quot;&gt;Not yet&lt;/div&gt;;
-messages.appendChild(div);
-messages.scrollTop = messages.scrollHeight;
-}
-
-window.handleLead = (choice) => {
-addMsg(choice, 'user');
-if(choice === 'Yes') {
-setTimeout(() => {
-addMsg("Great! To have Shirley review your case, please type your Email and WhatsApp below.", 'bot');
-}, 800);
-} else {
-setTimeout(() => {
-addMsg("No problem! Feel free to explore our site for more info.", 'bot');
-}, 800);
-}
+div.innerHTML = &lt;div class=&quot;chat-opt&quot; onclick=&quot;lead(&#39;yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;chat-opt&quot; onclick=&quot;lead(&#39;no&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+chat.appendChild(div);
+chat.scrollTop = chat.scrollHeight;
+}, 600);
 };
 
-// ENVIAR MENSAJES
-function executeSend() {
-const val = input.value.trim();
+window.lead = (choice) => {
+addMsg(choice === 'yes' ? "Yes, let's talk" : "Not yet", 'user');
+setTimeout(() => {
+if(choice === 'yes') {
+addMsg("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
+} else {
+addMsg("No problem! Feel free to explore our site for more tips.", 'bot');
+}
+}, 800);
+};
+
+function pushMsg() {
+const val = field.value.trim();
 if(val !== "") {
 addMsg(val, 'user');
-input.value = "";
-setTimeout(() => {
-addMsg("Thank you! Shirley will review this info and contact you if it's a match.", 'bot');
-}, 1000);
+field.value = "";
+setTimeout(() => { addMsg("Thank you! We've received your info. We'll contact you if it's a match.", 'bot'); }, 1000);
 }
 }
-
-sendBtn.addEventListener('click', executeSend);
-input.addEventListener('keypress', (e) => { if(e.key === 'Enter') executeSend(); });
 
 function addMsg(text, side) {
 const div = document.createElement('div');
 div.className = 'msg ' + (side === 'bot' ? 'bot-msg' : 'user-msg');
 div.innerText = text;
-messages.appendChild(div);
-messages.scrollTop = messages.scrollHeight;
+chat.appendChild(div);
+chat.scrollTop = chat.scrollHeight;
 }
-});
+
+field.addEventListener('keypress', (e) => { if(e.key === 'Enter') pushMsg(); });
 </script>
 
 </body>
