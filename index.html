@@ -173,33 +173,33 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* WIDGET HUNTER LEAD - AISLAMAMIENTO TOTAL /
-#bot-container {
+/* AISLAMAMIENTO SENIOR DE CHAT WIDGET /
+#inf01-bot-anchor {
 position: fixed !important;
-bottom: 25px !important;
-right: 25px !important;
-z-index: 10000 !important;
+bottom: 20px !important;
+right: 20px !important;
+z-index: 1000000 !important;
 width: 350px !important;
 max-width: 90vw !important;
 display: flex !important;
 flex-direction: column !important;
 align-items: flex-end !important;
+pointer-events: none !important;
 }
-#bot-window {
+#inf01-bot-win {
 width: 350px !important;
-max-width: 100% !important;
 height: 500px !important;
-background: #0d0d0d !important;
-border: 1.5px solid var(--primary) !important;
-border-radius: 24px !important;
+background: #0a0a0a !important;
+border: 1px solid var(--primary) !important;
+border-radius: 20px !important;
 margin-bottom: 15px !important;
-display: none; / Inicia oculto */
+display: none !important; / Manejado por JS */
 flex-direction: column !important;
+box-shadow: 0 20px 60px rgba(0,0,0,0.9) !important;
+pointer-events: auto !important;
 overflow: hidden !important;
-box-shadow: 0 25px 60px rgba(0,0,0,0.9) !important;
 }
-.bot-open { display: flex !important; }
-#bot-trigger {
+#inf01-bot-bubble {
 width: 65px !important;
 height: 65px !important;
 background: var(--primary) !important;
@@ -209,24 +209,36 @@ align-items: center !important;
 justify-content: center !important;
 cursor: pointer !important;
 box-shadow: 0 5px 20px rgba(0, 242, 255, 0.5) !important;
-transition: 0.3s !important;
-border: none !important;
+pointer-events: auto !important;
 }
-#bot-trigger:hover { transform: scale(1.05); }
-#bot-header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 0.9rem; }
-#bot-msgs { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-.msg { padding: 10px 14px; border-radius: 18px; font-size: 0.88rem; max-width: 80%; line-height: 1.4; }
-.bot-msg { background: rgba(255,255,255,0.06); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
-.user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 700; }
-.opt-btn { border: 1.5px solid var(--primary); color: var(--primary); padding: 10px; border-radius: 12px; cursor: pointer; text-align: center; font-size: 0.85rem; transition: 0.2s; }
-.opt-btn:hover { background: var(--primary); color: #000; }
-#bot-input-area { padding: 12px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
-#bot-field { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 8px; flex: 1; outline: none; }
-
-@media (max-width: 400px) {
-#bot-container { width: 300px; right: 10px; }
-#bot-window { height: 450px; }
+#inf01-bot-msgs {
+flex: 1 !important;
+padding: 15px !important;
+overflow-y: auto !important;
+display: flex !important;
+flex-direction: column !important;
+gap: 10px !important;
 }
+.inf01-msg {
+padding: 10px 14px !important;
+border-radius: 15px !important;
+font-size: 0.85rem !important;
+max-width: 80% !important;
+}
+.inf01-bot { background: rgba(255,255,255,0.06) !important; color: #fff !important; align-self: flex-start !important; }
+.inf01-user { background: var(--primary) !important; color: #000 !important; align-self: flex-end !important; font-weight: 700 !important; }
+.inf01-opt {
+border: 1px solid var(--primary) !important;
+color: var(--primary) !important;
+padding: 10px !important;
+border-radius: 12px !important;
+cursor: pointer !important;
+text-align: center !important;
+font-size: 0.8rem !important;
+margin-top: 5px !important;
+}
+.inf01-input-area { padding: 15px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; display: flex !important; gap: 10px !important; }
+.inf01-field { background: transparent !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #fff !important; flex: 1 !important; padding: 8px !important; border-radius: 5px !important; }
 </style>
 
 </head>
@@ -277,81 +289,83 @@ border: none !important;
 <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
 </div>
 
-<div id="bot-container">
-<div id="bot-window">
-<div id="bot-header">Surely Bot | AI Lead Hunter</div>
-<div id="bot-msgs">
-<div class="msg bot-msg">Hi! I'm the Surely AI Assistant. How can I help you shine today?</div>
-<div id="opt-list" style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
-<div class="opt-btn" onclick="startFlow('Marketing')">Social Media Strategy ($1,500+)</div>
-<div class="opt-btn" onclick="startFlow('Infrastructure')">Digital Infrastructure ($1,800+)</div>
+<div id="inf01-bot-anchor">
+<div id="inf01-bot-win">
+<div style="background:var(--primary);color:#000;padding:15px;font-weight:800;font-size:0.9rem;">Surely AI Lead Hunter</div>
+<div id="inf01-bot-msgs">
+<div class="inf01-msg inf01-bot">Hi! I'm Shirley's AI Assistant. How can I help you today?</div>
+<div id="inf01-opts" style="display:flex;flex-direction:column;gap:5px;">
+<div class="inf01-opt" onclick="inf01_flow('mkt')">Social Media Strategy ($1,500+)</div>
+<div class="inf01-opt" onclick="inf01_flow('inf')">Digital Infrastructure ($1,800+)</div>
 </div>
 </div>
-<div id="bot-input-area">
-<input type="text" id="bot-field" placeholder="Type your message...">
-<button onclick="send()" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 12px; font-weight:bold;">></button>
+<div class="inf01-input-area">
+<input type="text" id="inf01-field" class="inf01-field" placeholder="Type here...">
+<button onclick="inf01_send()" style="background:var(--primary);border:none;border-radius:5px;padding:5px 12px;cursor:pointer;font-weight:bold;">></button>
 </div>
 </div>
-<div id="bot-trigger" onclick="toggle()">
+<div id="inf01-bot-bubble">
 <span style="font-size:30px;">🤖</span>
 </div>
 </div>
 
 <script>
-const win = document.getElementById('bot-window');
-const msgs = document.getElementById('bot-msgs');
-const field = document.getElementById('bot-field');
+const inf01_win = document.getElementById('inf01-bot-win');
+const inf01_bubble = document.getElementById('inf01-bot-bubble');
+const inf01_field = document.getElementById('inf01-field');
+const inf01_chat = document.getElementById('inf01-bot-msgs');
 
-function toggle() {
-win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
+// TOGGLE SIN DEPENDENCIAS DE ESTADO EXTERNO
+inf01_bubble.addEventListener('click', (e) => {
+e.preventDefault();
+if (inf01_win.style.display === 'none' || inf01_win.style.display === '') {
+inf01_win.style.display = 'flex';
+} else {
+inf01_win.style.display = 'none';
 }
+});
 
-window.startFlow = (type) => {
-addMsg(type, 'user');
-document.getElementById('opt-list').style.display = 'none';
+window.inf01_flow = (type) => {
+document.getElementById('inf01-opts').style.display = 'none';
+const label = (type === 'mkt') ? 'Marketing Strategy' : 'Infrastructure';
+inf01_add(label, 'user');
 setTimeout(() => {
-const price = (type === 'Marketing') ? '$1,500/mo' : '$1,800';
-addMsg("Perfect. Our " + type + " solutions start at " + price + ". Is this within your budget?", 'bot');
-const div = document.createElement('div');
-div.style.marginTop = "10px";
-div.style.display = "flex";
-div.style.flexDirection = "column";
-div.style.gap = "8px";
-div.innerHTML = &lt;div class=&quot;opt-btn&quot; onclick=&quot;lead(&#39;Yes&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;opt-btn&quot; onclick=&quot;lead(&#39;No&#39;)&quot;&gt;Not yet&lt;/div&gt;;
-msgs.appendChild(div);
-msgs.scrollTop = msgs.scrollHeight;
+const price = (type === 'mkt') ? '$1,500/mo' : '$1,800';
+inf01_add("Great! Our " + label + " solutions start at " + price + ". Does this align with your budget?", 'bot');
+const d = document.createElement('div');
+d.style.marginTop = "10px";
+d.innerHTML = &lt;div class=&quot;inf01-opt&quot; onclick=&quot;inf01_lead(&#39;y&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;inf01-opt&quot; onclick=&quot;inf01_lead(&#39;n&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+inf01_chat.appendChild(d);
+inf01_chat.scrollTop = inf01_chat.scrollHeight;
 }, 600);
 };
 
-window.lead = (choice) => {
-addMsg(choice, 'user');
+window.inf01_lead = (choice) => {
+inf01_add(choice === 'y' ? "Yes, let's talk" : "Not yet", 'user');
 setTimeout(() => {
-if(choice === 'Yes') {
-addMsg("Great! To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
-} else {
-addMsg("No problem! Feel free to explore our site for more tips.", 'bot');
-}
+if(choice === 'y') inf01_add("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
+else inf01_add("No problem! Feel free to explore our site for more tips.", 'bot');
 }, 800);
 };
 
-function send() {
-const val = field.value.trim();
-if(val !== "") {
-addMsg(val, 'user');
-field.value = "";
-setTimeout(() => { addMsg("Thank you! Shirley will review this info and contact you if it's a match.", 'bot'); }, 1000);
+function inf01_send() {
+const v = inf01_field.value.trim();
+if(v !== "") {
+inf01_add(v, 'user');
+inf01_field.value = "";
+setTimeout(() => { inf01_add("Thank you! We've received your info. Shirley will contact you shortly if it's a match.", 'bot'); }, 1000);
 }
 }
 
-function addMsg(text, side) {
-const div = document.createElement('div');
-div.className = 'msg ' + (side === 'bot' ? 'bot-msg' : 'user-msg');
-div.innerText = text;
-msgs.appendChild(div);
-msgs.scrollTop = msgs.scrollHeight;
+function inf01_add(t, s) {
+const d = document.createElement('div');
+d.className = 'inf01-msg ' + (s === 'bot' ? 'inf01-bot' : 'inf01-user');
+d.innerText = t;
+inf01_chat.appendChild(d);
+inf01_chat.scrollTop = inf01_chat.scrollHeight;
 }
 
-field.addEventListener('keypress', (e) => { if(e.key === 'Enter') send(); });
+inf01_field.addEventListener('keypress', (e) => { if(e.key === 'Enter') inf01_send(); });
 </script>
 
 </body>
