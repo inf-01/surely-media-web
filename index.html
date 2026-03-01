@@ -13,7 +13,252 @@ gtag('config', 'G-4JLND77F73');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surely Media | Strategy Simplified</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+:root {
+--primary: #00f2ff;
+--accent: #FF8C00;
+--bg: #030303;
+--glass: rgba(255, 255, 255, 0.02);
+--text-main: #ffffff;
+--text-dim: #b0b0b0;
+}
+body {
+background-color: var(--bg);
+color: var(--text-main);
+font-family: 'Inter', sans-serif;
+margin: 0;
+line-height: 1.8;
+overflow-x: hidden;
+}
+.background-glow {
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: radial-gradient(circle at 50% -10%, #001f24 0%, #030303 80%);
+z-index: -1;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 100px 20px;
+text-align: center;
+}
+.brand {
+margin-bottom: 80px;
+}
+.brand h1 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(3.5rem, 12vw, 6rem);
+margin: 0;
+letter-spacing: -2px;
+background: linear-gradient(to bottom, #ffffff 40%, var(--primary) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 25px rgba(0, 242, 255, 0.4));
+}
+.brand p {
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 10px;
+color: var(--accent);
+margin-top: 20px;
+font-weight: 800;
+}
+.section-title {
+font-size: 1.2rem;
+text-transform: uppercase;
+letter-spacing: 6px;
+color: var(--primary);
+margin: 100px 0 40px;
+font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
+.section-title::before, .section-title::after {
+content: "";
+height: 2px;
+width: 150px;
+background: var(--primary);
+opacity: 0.6;
+}
+.hero-box {
+background: rgba(0, 242, 255, 0.04);
+backdrop-filter: blur(30px);
+-webkit-backdrop-filter: blur(30px);
+border: 2px solid var(--primary);
+padding: 80px 40px;
+border-radius: 40px;
+margin-bottom: 80px;
+box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+}
+.hero-box p {
+font-size: clamp(1.5rem, 4vw, 2.2rem);
+line-height: 1.4;
+font-weight: 300;
+color: #fff;
+margin: 0;
+}
+.about-box {
+background: var(--glass);
+backdrop-filter: blur(20px);
+border: 1px solid rgba(0, 242, 255, 0.12);
+padding: 50px 40px;
+border-radius: 32px;
+margin-bottom: 80px;
+text-align: left;
+}
+.about-box h2 {
+color: var(--primary);
+font-family: 'Playfair Display', serif;
+font-size: clamp(2.2rem, 5vw, 2.8rem);
+margin-top: 0;
+}
+.services {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 30px;
+text-align: left;
+}
+.service-card {
+background: rgba(255, 255, 255, 0.01);
+padding: 50px 40px;
+border-radius: 28px;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.marketing-card:hover {
+border-color: var(--accent) !important;
+background: rgba(255, 140, 0, 0.04);
+transform: translateY(-12px);
+box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
+}
+.infra-card:hover {
+border-color: var(--primary) !important;
+background: rgba(0, 242, 255, 0.04);
+transform: translateY(-12px);
+box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+}
+.service-card h3 {
+color: #fff;
+font-size: 1.5rem;
+margin-bottom: 20px;
+font-weight: 800;
+}
+.service-card p {
+margin: 0;
+color: var(--text-dim);
+font-size: 1.05rem;
+}
+.cta {
+display: inline-block;
+margin-top: 100px;
+padding: 24px 80px;
+background: transparent;
+color: var(--primary);
+border: 2px solid var(--primary);
+text-decoration: none;
+font-weight: 800;
+border-radius: 100px;
+transition: 0.3s;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+.cta:hover {
+background: var(--accent);
+border-color: var(--accent);
+color: #000;
+box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
+transform: scale(1.05);
+}
+
+/* HUNTER LEAD UI - AISLAMAMIENTO SENIOR */
+#h-root {
+position: fixed !important;
+bottom: 20px !important;
+right: 20px !important;
+z-index: 100000 !important;
+width: 350px !important;
+max-width: 90vw !important;
+display: flex !important;
+flex-direction: column !important;
+align-items: flex-end !important;
+pointer-events: none !important;
+}
+#h-win {
+width: 350px !important;
+height: 500px !important;
+background: #0a0a0a !important;
+border: 1px solid var(--primary) !important;
+border-radius: 20px !important;
+margin-bottom: 15px !important;
+display: none;
+flex-direction: column !important;
+overflow: hidden !important;
+box-shadow: 0 20px 50px rgba(0,0,0,0.9) !important;
+pointer-events: auto !important;
+}
+#h-bubble {
+width: 65px !important;
+height: 65px !important;
+background: var(--primary) !important;
+border-radius: 50% !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+cursor: pointer !important;
+box-shadow: 0 5px 20px rgba(0, 242, 255, 0.5) !important;
+pointer-events: auto !important;
+}
+#h-msgs {
+flex: 1 !important;
+padding: 15px !important;
+overflow-y: auto !important;
+display: flex !important;
+flex-direction: column !important;
+gap: 12px !important;
+}
+.h-msg {
+padding: 10px 14px !important;
+border-radius: 15px !important;
+font-size: 0.85rem !important;
+max-width: 80% !important;
+}
+.h-bot { background: rgba(255,255,255,0.06) !important; color: #fff !important; align-self: flex-start !important; border-left: 3px solid var(--primary) !important; }
+.h-user { background: var(--primary) !important; color: #000 !important; align-self: flex-end !important; font-weight: 700 !important; }
+.h-opt {
+border: 1px solid var(--primary) !important;
+color: var(--primary) !important;
+padding: 10px !important;
+border-radius: 12px !important;
+cursor: pointer !important;
+text-align: center !important;
+font-size: 0.8rem !important;
+margin-top: 8px !important;
+}
+.h-opt:hover { background: var(--primary) !important; color: #000 !important; }
+#h-input-bar {
+padding: 15px !important;
+border-top: 1px solid rgba(255,255,255,0.1) !important;
+display: flex !important;
+gap: 10px !important;
+}
+#h-field {
+background: transparent !important;
+border: 1px solid rgba(255,255,255,0.2) !important;
+color: #fff !important;
+flex: 1 !important;
+padding: 8px !important;
+border-radius: 5px !important;
+outline: none !important;
+}
+@media (max-width: 768px) {
+.container { padding: 60px 20px; }
+.hero-box { padding: 50px 25px; }
+#h-root { width: 300px; }
+}
+</style>
+
 </head>
 <body>
 <div class="background-glow"></div>
@@ -64,20 +309,20 @@ gtag('config', 'G-4JLND77F73');
 
 <div id="h-root">
 <div id="h-win">
-<div id="h-header">Surely AI | Lead Hunter</div>
+<div style="background:var(--primary);color:#000;padding:15px;font-weight:800;font-size:0.9rem;">Surely AI | Lead Hunter</div>
 <div id="h-msgs">
-<div class="h-msg h-bot">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
-<div id="h-opts">
+<div class="h-msg h-bot">Hi! I'm Shirley's AI Assistant. How can I help you today?</div>
+<div id="h-options-box" style="display:flex;flex-direction:column;gap:5px;">
 <div class="h-opt" onclick="flow('mkt')">Social Media Strategy ($1,500+)</div>
 <div class="h-opt" onclick="flow('inf')">Digital Infrastructure ($1,800+)</div>
 </div>
 </div>
-<div id="h-input-area">
+<div id="h-input-bar">
 <input type="text" id="h-field" placeholder="Type here...">
-<button onclick="hSend()">></button>
+<button onclick="hSend()" style="background:var(--primary);border:none;border-radius:5px;padding:5px 12px;cursor:pointer;font-weight:bold;">></button>
 </div>
 </div>
-<div id="h-bubble"><span>🤖</span></div>
+<div id="h-bubble"><span style="font-size:30px;">🤖</span></div>
 </div>
 
 <script>
@@ -87,29 +332,33 @@ const hField = document.getElementById('h-field');
 const hChat = document.getElementById('h-msgs');
 
 hBubble.addEventListener('click', () => {
-hWin.style.display = (hWin.style.display === 'none' || hWin.style.display === '') ? 'flex' : 'none';
+if (hWin.style.display === 'none' || hWin.style.display === '') {
+hWin.style.display = 'flex';
+} else {
+hWin.style.display = 'none';
+}
 });
 
-window.flow = (t) => {
-document.getElementById('h-opts').style.display = 'none';
-const label = (t === 'mkt') ? 'Marketing' : 'Infrastructure';
+window.flow = (type) => {
+document.getElementById('h-options-box').style.display = 'none';
+const label = (type === 'mkt') ? 'Marketing Strategy' : 'Infrastructure';
 add(label, 'user');
 setTimeout(() => {
-const price = (t === 'mkt') ? '$1,500/mo' : '$1,800';
-add("Great. Our " + label + " solutions start at " + price + ". Does this align with your budget?", 'bot');
-const d = document.createElement('div');
-d.style.marginTop = "10px";
-d.innerHTML = &lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;y&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;n&#39;)&quot;&gt;Not yet&lt;/div&gt;;
-hChat.appendChild(d);
+const price = (type === 'mkt') ? '$1,500/mo' : '$1,800';
+add("Great! Our " + label + " solutions start at " + price + ". Does this align with your budget?", 'bot');
+const div = document.createElement('div');
+div.style.marginTop = "10px";
+div.innerHTML = &lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;y&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt;&lt;div class=&quot;h-opt&quot; onclick=&quot;lead(&#39;n&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+hChat.appendChild(div);
 hChat.scrollTop = hChat.scrollHeight;
 }, 600);
 };
 
-window.lead = (c) => {
-add(c === 'y' ? "Yes, let's talk" : "Not yet", 'user');
+window.lead = (choice) => {
+add(choice === 'y' ? "Yes, let's talk" : "Not yet", 'user');
 setTimeout(() => {
-if(c === 'y') add("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
-else add("No problem! Feel free to explore our site for more tips.", 'bot');
+if(choice === 'y') add("Perfect. Please type your Email and WhatsApp so Shirley can review your case personally.", 'bot');
+else add("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
 }, 800);
 };
 
@@ -118,7 +367,7 @@ const v = hField.value.trim();
 if(v !== "") {
 add(v, 'user');
 hField.value = "";
-setTimeout(() => { add("Thank you. Shirley will review this info and contact you shortly.", 'bot'); }, 1000);
+setTimeout(() => { add("Thank you! Shirley will review this info and contact you shortly if it's a match.", 'bot'); }, 1000);
 }
 }
 
