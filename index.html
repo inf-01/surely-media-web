@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4JLND77F73"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-4JLND77F73');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surely Media | Strategy Simplified</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Playfair+Display:ital,wght@1,600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --accent: #FF8C00;
+            --bg: #030303;
+            --glass: rgba(255, 255, 255, 0.02);
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .background-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% -10%, #001f24 0%, #030303 80%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .brand {
+            margin-bottom: 80px;
+        }
+
+        .brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            margin: 0;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #ffffff 40%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 25px rgba(0, 242, 255, 0.4));
+        }
+
+        .brand p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            color: var(--accent);
+            margin-top: 20px;
+            font-weight: 800;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--primary);
+            margin: 100px 0 40px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: "";
+            height: 2px;
+            width: 150px;
+            background: var(--primary);
+            opacity: 0.6;
+        }
+
+        .hero-box {
+            background: rgba(0, 242, 255, 0.04);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 2px solid var(--primary);
+            padding: 80px 40px;
+            border-radius: 40px;
+            margin-bottom: 80px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .hero-box p {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            line-height: 1.4;
+            font-weight: 300;
+            color: #fff;
+            margin: 0;
+        }
+
+        .about-box {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.12);
+            padding: 50px 40px;
+            border-radius: 32px;
+            margin-bottom: 80px;
+            text-align: left;
+        }
+
+        .about-box h2 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 2.8rem);
+            margin-top: 0;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 50px 40px;
+            border-radius: 28px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .marketing-card:hover {
+            border-color: var(--accent) !important;
+            background: rgba(255, 140, 0, 0.04);
+            transform: translateY(-12px);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.3);
+        }
+
+        .infra-card:hover {
+            border-color: var(--primary) !important;
+            background: rgba(0, 242, 255, 0.04);
+            transform: translateY(-12px);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .service-card h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 100px;
+            padding: 24px 80px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 100px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+            box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* HUNTER LEAD - SENIOR ISOLATION SYSTEM */
+        #inf01_hunter_root {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 2147483647 !important;
+            width: 350px !important;
+            max-width: 85vw !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-end !important;
+        }
+
+        #inf01_hunter_win {
+            width: 350px !important;
+            max-width: 100% !important;
+            height: 500px !important;
+            background: #080808 !important;
+            border: 1.5px solid var(--primary) !important;
+            border-radius: 20px !important;
+            margin-bottom: 12px !important;
+            display: none;
+            flex-direction: column !important;
+            overflow: hidden !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95) !important;
+        }
+
+        #inf01_hunter_btn {
+            width: 65px !important;
+            height: 65px !important;
+            background: var(--primary) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            box-shadow: 0 5px 25px rgba(0, 242, 255, 0.5) !important;
+            border: none !important;
+            transition: 0.3s !important;
+        }
+
+        #inf01_hunter_btn:hover {
+            transform: scale(1.05);
+        }
+
+        #inf01_hunter_header {
+            background: var(--primary);
+            color: #000;
+            padding: 15px;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        #inf01_hunter_msgs {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .inf01_m {
+            padding: 10px 14px;
+            border-radius: 15px;
+            font-size: 13px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .inf01_bot {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            align-self: flex-start;
+            border-left: 3px solid var(--primary);
+        }
+
+        .inf01_user {
+            background: var(--primary);
+            color: #000;
+            align-self: flex-end;
+            font-weight: 700;
+        }
+
+        .inf01_opt {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .inf01_opt:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        #inf01_hunter_input {
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 8px;
+        }
+
+        #inf01_field {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="background-glow"></div>
+    <div class="container">
+        <header class="brand">
+            <h1>Surely Media</h1>
+            <p>Strategy, Simplified, Success, Surely</p>
+        </header>
+        <section class="hero-box">
+            <p>Every brand gets its moment to shine. We build vibrant communities, craft scroll-stopping content, and
+                create electric moments of connection for any industry.</p>
+        </section>
+        <div class="about-box">
+            <h2>Our Mission</h2>
+            <p>We believe social media should feel exciting, not exhausting. Our mission is to bring genuine joy to your
+                brand’s online presence while delivering serious results. We combine smart strategy, creative flair, and
+                data-driven precision to help businesses grow with confidence.</p>
+        </div>
+        <div class="section-title">Marketing & Creative</div>
+        <div class="services">
+            <div class="service-card marketing-card">
+                <h3>Social Media Marketing</h3>
+                <p>Podcast Thumbnails, Strategy development, content production, publishing and monitoring across all
+                    digital platforms.</p>
+            </div>
+            <div class="service-card marketing-card">
+                <h3>Community & Performance</h3>
+                <p>Social Media listening, community management, paid social, targeted ads and detailed analytics.</p>
+            </div>
+            <div class="service-card marketing-card">
+                <h3>Let’s Create</h3>
+                <p>Viral ideas, trend-worthy campaigns, and creative sparks across Instagram, TikTok, LinkedIn, and
+                    Facebook.</p>
+            </div>
+        </div>
+        <div class="section-title">Infrastructure & Protection</div>
+        <div class="services">
+            <div class="service-card infra-card">
+                <h3>Identity Shielding</h3>
+                <p>Corporate infrastructure migration (Workspace), advanced encryption, and protection against
+                    communication vulnerabilities.</p>
+            </div>
+            <div class="service-card infra-card">
+                <h3>AI Conversion Engineering</h3>
+                <p>Autonomous agents and high-performance landing pages designed to filter leads and turn visitors into
+                    clients.</p>
+            </div>
+            <div class="service-card infra-card">
+                <h3>Smart Infrastructure</h3>
+                <p>Elite technical SEO, architecture of conversion, and technical deployment that guarantees load speeds
+                    under 2s.</p>
+            </div>
+        </div>
+        <a href="mailto:letstalk@surely.media" class="cta">Connect with surely media</a>
+    </div>
+
+    <div id="inf01_hunter_root">
+        <div id="inf01_hunter_win">
+            <div id="inf01_hunter_header">Surely AI | Lead Hunter</div>
+            <div id="inf01_hunter_msgs">
+                <div class="inf01_m inf01_bot">Hi! I'm the Surely AI Agent! How can we help your brand shine today?
+                </div>
+                <div id="inf01_opts_box" style="display:flex; flex-direction:column; gap:6px; margin-top:10px;">
+                    <div class="inf01_opt" onclick="inf01_start('mkt')">Social Media Marketing</div>
+                    <div class="inf01_opt" onclick="inf01_start('inf')">Technical Digital Infrastructure</div>
+                </div>
+            </div>
+            <div id="inf01_hunter_input">
+                <input type="text" id="inf01_field" placeholder="Ask me about our services or prices...">
+                <button onclick="inf01_send()"
+                    style="background:var(--primary); border:none; border-radius:5px; padding:5px 12px; cursor:pointer; font-weight:bold; color:black;">></button>
+            </div>
+        </div>
+        <div id="inf01_hunter_btn" title="Chat with Surely AI"
+            style="padding: 0; overflow: hidden; background: #000 !important; border: 2px solid var(--primary) !important;">
+            <img src="bot-avatar.png" alt="Surely AI"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+    </div>
+
+    <script>
+        const inf01_w = document.getElementById('inf01_hunter_win');
+        const inf01_b = document.getElementById('inf01_hunter_btn');
+        const inf01_f = document.getElementById('inf01_field');
+        const inf01_c = document.getElementById('inf01_hunter_msgs');
+
+        let leadStage = 0; // 0: Exploring, 1: Requesting Contact, 2: Captured
+
+        inf01_b.addEventListener('click', () => {
+            inf01_w.style.display = (inf01_w.style.display === 'none' || inf01_w.style.display === '') ? 'flex' : 'none';
+        });
+
+        function inf01_add(t, s) {
+            const d = document.createElement('div');
+            d.className = 'inf01_m ' + (s === 'bot' ? 'inf01_bot' : 'inf01_user');
+            d.innerText = t;
+            inf01_c.appendChild(d);
+            inf01_c.scrollTop = inf01_c.scrollHeight;
+        }
+
+        window.inf01_start = (type) => {
+            document.getElementById('inf01_opts_box').style.display = 'none';
+            const label = (type === 'mkt') ? 'Social Media Marketing' : 'Technical Digital Infrastructure';
+            inf01_add(label, 'user');
+            setTimeout(() => {
+                if (type === 'mkt') {
+                    inf01_add("Great! We handle everything from strategy to content production. Our Monthly Posts package starts at $1,500, and Full Management is $3,500. Would you like to discuss your specific needs?", 'bot');
+                } else {
+                    inf01_add("Awesome. We build Sales Architecture, AI Automation, and Email Security. Individual services start at $1,800, and our Full Suite is $6,000. Are you looking to scale your infrastructure?", 'bot');
+                }
+                leadStage = 1; // ready to capture
+            }, 600);
+        };
+
+        function getAIResponse(input) {
+            input = input.toLowerCase();
+
+            // Stage 1: Trying to capture lead info
+            if (leadStage === 1 && (input.includes("@") || /\d{7,}/.test(input))) {
+                leadStage = 2;
+                return "Thank you! I have securely saved your contact details. Shirley Maldonado, our Commercial Director, will review your case and contact you soon. Is there anything else you'd like to know about our services?";
+            } else if (leadStage === 1 && (input.includes("yes") || input.includes("sure") || input.includes("talk") || input.includes("interested"))) {
+                return "Excellent! Please provide your Email address or WhatsApp phone number so Shirley can reach out to you directly.";
+            }
+
+            // Knowledge Base matching
+            if (input.includes("thumbnail") || input.includes("thumbnails")) return "Our custom thumbnails are $65.00 each. Highly engaging and click-optimized! Would you like to start a project?";
+            if (input.includes("post") || input.includes("monthly social")) return "Our Monthly Social Media Posts package starts at $1,500. We handle strategy, calendars, and monitoring. Need more info?";
+            if (input.includes("ads") || input.includes("advertising")) return "We run highly targeted Paid Social ads for $500 each. Want to scale your results?";
+            if (input.includes("video") || input.includes("reel") || input.includes("tiktok")) return "We produce scroll-stopping videos for $500 each. Let me know if you want to book a call!";
+            if (input.includes("full social") || input.includes("management")) return "Our Full Social Media Management Monthly is $3,500. It covers community building, content production, publishing, and beyond.";
+
+            if (input.includes("integral") || input.includes("full suite") || input.includes("6000") || input.includes("shielding")) return "Our INTEGRAL PACKAGE is $6,000 USD. It includes Total digital shielding, Web, AI, and Email Security. Delivery in 3 to 5 weeks. Are you interested in the full suite?";
+            if (input.includes("email") || input.includes("security") || input.includes("migration")) return "Email Security & Migration is $1,800 USD. We configure SPF, DKIM, DMARC to bypass SPAM. Shall we capture your contact details?";
+            if (input.includes("web") || input.includes("landing") || input.includes("performance") || input.includes("site") || input.includes("design")) return "High-Performance Web Design is $3,000 USD. Ultra-fast speeds and high conversion architecture. Would you like to proceed?";
+            if (input.includes("ai") || input.includes("automation") || input.includes("agent") || input.includes("bot")) return "Our AI Sales Automation (like myself) is $3,000 USD. We engineer autonomous agents for customer service and lead filtering. Interested?";
+
+            if (input.includes("price") || input.includes("cost") || input.includes("budget") || input.includes("services")) return "We have two main branches: 1) Social Media Marketing (Prices from $65 to $3,500/mo). 2) Tech Infrastructure (Web, AI, Security from $1,800 to $6,000). Which one are you interested in?";
+
+            if (input.includes("about") || input.includes("who") || input.includes("mission") || input.includes("surely")) return "We are Surely Media—where strategy meets sparkle! Our mission is to bring genuine joy to your brand's online presence while delivering serious results.";
+
+            if (input.includes("yes") || input.includes("sure") || input.includes("talk") || input.includes("interested")) {
+                leadStage = 1;
+                return "Excellent! Please provide your Email address and your WhatsApp phone number so Shirley can reach out to you directly.";
+            }
+
+            if (input.includes("no") || input.includes("not yet")) {
+                return "No problem at all! Feel free to ask any other questions about our services or pricing. I'm here 24/7!";
+            }
+
+            if (input.includes("hi") || input.includes("hello") || input.includes("hey")) {
+                return "Hello! I'm the Surely AI Lead Hunter. I can help you with Social Media Marketing packages or Tech Digital Infrastructure. What are you looking to elevate today?";
+            }
+
+            return "I see! To better assist you, are you looking for Social Media Marketing (content, ads, management) or Tech Infrastructure (Web, AI, Email security)? Or feel free to drop your email/phone so we can contact you!";
+        }
+
+        function inf01_send() {
+            const v = inf01_f.value.trim();
+            if (v !== "") {
+                inf01_add(v, 'user');
+                inf01_f.value = "";
+
+                // Show typing indicator
+                const typingId = "typ_" + Date.now();
+                setTimeout(() => {
+                    const d = document.createElement('div');
+                    d.className = 'inf01_m inf01_bot';
+                    d.id = typingId;
+                    d.innerText = "...";
+                    inf01_c.appendChild(d);
+                    inf01_c.scrollTop = inf01_c.scrollHeight;
+                }, 100);
+
+                setTimeout(() => {
+                    const typingEl = document.getElementById(typingId);
+                    if (typingEl) typingEl.remove();
+
+                    const reply = getAIResponse(v);
+                    inf01_add(reply, 'bot');
+
+                    // if AI asks for contact info, set leadStage
+                    if (reply.includes("Email address") || reply.includes("contact details")) {
+                        leadStage = 1;
+                    }
+                }, 1200);
+            }
+        }
+
+        inf01_f.addEventListener('keypress', (e) => { if (e.key === 'Enter') inf01_send(); });
+    </script>
+
+</body>
+
+</html>
