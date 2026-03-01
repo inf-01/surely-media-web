@@ -173,24 +173,107 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* CHAT HUNTER LEAD CSS */
-#chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
-#chat-button { width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 20px rgba(0, 242, 255, 0.5); transition: 0.3s; }
-#chat-window { position: absolute; bottom: 90px; right: 0; width: 350px; height: 500px; background: #0a0a0a; border: 1px solid var(--primary); border-radius: 20px; display: none; flex-direction: column; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.9); }
-#chat-header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; text-align: left; font-size: 0.9rem; }
-#chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-.msg { padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; max-width: 80%; }
-.bot-msg { background: rgba(255,255,255,0.05); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
-.user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 600; }
-#chat-input-area { padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 10px; }
-#chat-input { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 5px; flex: 1; }
-.chat-option { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 8px 10px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-bottom: 5px; text-align: center; transition: 0.3s; }
-.chat-option:hover { background: var(--primary); color: #000; }
+/* CHAT WIDGET REPARADO */
+#chat-widget {
+position: fixed;
+bottom: 30px;
+right: 30px;
+z-index: 9999 !important;
+}
+#chat-button {
+width: 70px;
+height: 70px;
+background: var(--primary);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+transition: 0.3s;
+}
+#chat-window {
+position: absolute;
+bottom: 90px;
+right: 0;
+width: 350px;
+height: 500px;
+background: #0a0a0a;
+border: 1px solid var(--primary);
+border-radius: 20px;
+display: none;
+flex-direction: column;
+overflow: hidden;
+box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+#chat-header {
+background: var(--primary);
+color: #000;
+padding: 15px;
+font-weight: 800;
+text-align: left;
+font-size: 0.9rem;
+}
+#chat-messages {
+flex: 1;
+padding: 20px;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+.msg {
+padding: 10px 15px;
+border-radius: 15px;
+font-size: 0.9rem;
+max-width: 80%;
+}
+.bot-msg {
+background: rgba(255,255,255,0.05);
+color: #fff;
+align-self: flex-start;
+border-left: 3px solid var(--primary);
+}
+.user-msg {
+background: var(--primary);
+color: #000;
+align-self: flex-end;
+font-weight: 600;
+}
+#chat-input-area {
+padding: 15px;
+border-top: 1px solid rgba(255,255,255,0.1);
+display: flex;
+gap: 10px;
+}
+#chat-input {
+background: transparent;
+border: 1px solid rgba(255,255,255,0.2);
+color: #fff;
+padding: 8px;
+border-radius: 5px;
+flex: 1;
+}
+.chat-option {
+background: transparent;
+border: 1px solid var(--primary);
+color: var(--primary);
+padding: 8px 10px;
+border-radius: 20px;
+cursor: pointer;
+font-size: 0.8rem;
+margin-bottom: 5px;
+text-align: center;
+transition: 0.3s;
+}
+.chat-option:hover {
+background: var(--primary);
+color: #000;
+}
 
 @media (max-width: 768px) {
 .container { padding: 60px 20px; }
 .hero-box { padding: 50px 25px; }
-.section-title::before, .section-title::after { width: 40px; }
 #chat-window { width: 300px; right: -10px; }
 }
 </style>
@@ -247,10 +330,10 @@ transform: scale(1.05);
 <div id="chat-window">
 <div id="chat-header">Surely Bot | AI Assistant</div>
 <div id="chat-messages">
-<div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. We help brands shine and secure their infrastructure. How can I help you today?</div>
+<div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
 <div id="options-container" style="display:flex; flex-direction:column; gap:5px;">
-<div class="chat-option" onclick="selectOption('Marketing')">I need Social Media Strategy ($1,500+)</div>
-<div class="chat-option" onclick="selectOption('Infrastructure')">I need Elite Infrastructure/AI ($1,800+)</div>
+<div class="chat-option" onclick="selectOption('Marketing')">Social Media Strategy ($1,500+)</div>
+<div class="chat-option" onclick="selectOption('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
 </div>
 </div>
 <div id="chat-input-area">
@@ -266,44 +349,49 @@ transform: scale(1.05);
 <script>
 function toggleChat() {
 const win = document.getElementById('chat-window');
-win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+if (win.style.display === "none" || win.style.display === "") {
+win.style.display = "flex";
+} else {
+win.style.display = "none";
+}
 }
 
 function selectOption(option) {
 addMessage(option, 'user');
-const msgContainer = document.getElementById('options-container');
-if(msgContainer) msgContainer.innerHTML = '';
+const opts = document.getElementById('options-container');
+if(opts) opts.style.display = 'none';
 
 if(option === 'Marketing') {
 setTimeout(() => {
-addMessage("Excellent. Our joy-focused strategies start at $1,500/mo. Does this align with your current marketing goals?", 'bot');
+addMessage("Excellent. Our joy-focused strategies start at $1,500/mo. Does this align with your budget?", 'bot');
 showBudgetOptions();
-}, 800);
+}, 600);
 } else {
 setTimeout(() => {
-addMessage("Infrastructure is key. Our elite setups, security and AI agents start at $1,800. Is this within your plans?", 'bot');
+addMessage("Infrastructure is key. Our elite setups and AI agents start at $1,800. Is this within your plans?", 'bot');
 showBudgetOptions();
-}, 800);
+}, 600);
 }
 }
 
 function showBudgetOptions() {
 const container = document.getElementById('chat-messages');
 const div = document.createElement('div');
-div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Yes, let\&#39;s talk&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt; &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Not yet&#39;)&quot;&gt;Not yet&lt;/div&gt;;
+div.style.marginTop = "10px";
+div.innerHTML = &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Yes, let\\&#39;s talk&#39;)&quot;&gt;Yes, let&#39;s talk&lt;/div&gt; &lt;div class=&quot;chat-option&quot; onclick=&quot;captureLead(&#39;Not yet&#39;)&quot;&gt;Not yet&lt;/div&gt;;
 container.appendChild(div);
 container.scrollTop = container.scrollHeight;
 }
 
 function captureLead(choice) {
 addMessage(choice, 'user');
-if(choice === "Yes, let's talk") {
+if(choice.includes('Yes')) {
 setTimeout(() => {
-addMessage("Perfect. To get your case reviewed personally by Shirley, please type your Email and WhatsApp.", 'bot');
+addMessage("Perfect. To have Shirley review your case, please type your Email and WhatsApp.", 'bot');
 }, 800);
 } else {
 setTimeout(() => {
-addMessage("No problem! Feel free to explore our services above or follow us for free tips.", 'bot');
+addMessage("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
 }, 800);
 }
 }
@@ -323,7 +411,7 @@ if(input.value.trim() !== "") {
 addMessage(input.value, 'user');
 input.value = "";
 setTimeout(() => {
-addMessage("Thank you! I've logged this. If your project is a match, you will receive our calendar link shortly.", 'bot');
+addMessage("Thank you! I've logged this. Shirley will review it and send a link if it's a match.", 'bot');
 }, 1000);
 }
 }
