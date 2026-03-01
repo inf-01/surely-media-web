@@ -173,7 +173,7 @@ box-shadow: 0 0 40px rgba(255, 140, 0, 0.5);
 transform: scale(1.05);
 }
 
-/* CHAT WIDGET REPARADO */
+/* CHAT WIDGET - ESTRUCTURA BLINDADA /
 #chat-widget {
 position: fixed;
 bottom: 30px;
@@ -190,7 +190,6 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-transition: 0.3s;
 }
 #chat-window {
 position: absolute;
@@ -206,74 +205,21 @@ flex-direction: column;
 overflow: hidden;
 box-shadow: 0 20px 50px rgba(0,0,0,0.9);
 }
-#chat-header {
-background: var(--primary);
-color: #000;
-padding: 15px;
-font-weight: 800;
-text-align: left;
-font-size: 0.9rem;
+/ CLASE MAESTRA DE APERTURA */
+.chat-active {
+display: flex !important;
 }
-#chat-messages {
-flex: 1;
-padding: 20px;
-overflow-y: auto;
-display: flex;
-flex-direction: column;
-gap: 15px;
-}
-.msg {
-padding: 10px 15px;
-border-radius: 15px;
-font-size: 0.9rem;
-max-width: 80%;
-}
-.bot-msg {
-background: rgba(255,255,255,0.05);
-color: #fff;
-align-self: flex-start;
-border-left: 3px solid var(--primary);
-}
-.user-msg {
-background: var(--primary);
-color: #000;
-align-self: flex-end;
-font-weight: 600;
-}
-#chat-input-area {
-padding: 15px;
-border-top: 1px solid rgba(255,255,255,0.1);
-display: flex;
-gap: 10px;
-}
-#chat-input {
-background: transparent;
-border: 1px solid rgba(255,255,255,0.2);
-color: #fff;
-padding: 8px;
-border-radius: 5px;
-flex: 1;
-}
-.chat-option {
-background: transparent;
-border: 1px solid var(--primary);
-color: var(--primary);
-padding: 8px 10px;
-border-radius: 20px;
-cursor: pointer;
-font-size: 0.8rem;
-margin-bottom: 5px;
-text-align: center;
-transition: 0.3s;
-}
-.chat-option:hover {
-background: var(--primary);
-color: #000;
-}
+#chat-header { background: var(--primary); color: #000; padding: 15px; font-weight: 800; font-size: 0.9rem; }
+#chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+.msg { padding: 10px 15px; border-radius: 15px; font-size: 0.9rem; max-width: 80%; }
+.bot-msg { background: rgba(255,255,255,0.05); color: #fff; align-self: flex-start; border-left: 3px solid var(--primary); }
+.user-msg { background: var(--primary); color: #000; align-self: flex-end; font-weight: 600; }
+#chat-input-area { padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 10px; }
+#chat-input { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 5px; flex: 1; }
+.chat-option { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 8px 10px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-bottom: 5px; text-align: center; }
+.chat-option:hover { background: var(--primary); color: #000; }
 
 @media (max-width: 768px) {
-.container { padding: 60px 20px; }
-.hero-box { padding: 50px 25px; }
 #chat-window { width: 300px; right: -10px; }
 }
 </style>
@@ -332,31 +278,43 @@ color: #000;
 <div id="chat-messages">
 <div class="msg bot-msg">Hi! I'm Shirley's AI Assistant. How can I help you shine today?</div>
 <div id="options-container" style="display:flex; flex-direction:column; gap:5px;">
-<div class="chat-option" onclick="selectOption('Marketing')">Social Media Strategy ($1,500+)</div>
-<div class="chat-option" onclick="selectOption('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
+<div class="chat-option" onclick="handleOption('Marketing')">Social Media Strategy ($1,500+)</div>
+<div class="chat-option" onclick="handleOption('Infrastructure')">Digital Infrastructure/AI ($1,800+)</div>
 </div>
 </div>
 <div id="chat-input-area">
 <input type="text" id="chat-input" placeholder="Type a message...">
-<button onclick="sendMessage()" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">></button>
+<button id="send-btn" style="background:var(--primary); border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">></button>
 </div>
 </div>
-<div id="chat-button" onclick="toggleChat()">
+<div id="chat-button">
 <span style="font-size:30px;">🤖</span>
 </div>
 </div>
 
 <script>
-function toggleChat() {
+document.addEventListener('DOMContentLoaded', () => {
+const btn = document.getElementById('chat-button');
 const win = document.getElementById('chat-window');
-if (win.style.display === "none" || win.style.display === "") {
-win.style.display = "flex";
-} else {
-win.style.display = "none";
-}
-}
+const input = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
 
-function selectOption(option) {
+// APERTURA BLINDADA POR CLASE
+btn.addEventListener('click', () => {
+win.classList.toggle('chat-active');
+});
+
+// ENVÍO POR BOTÓN
+sendBtn.addEventListener('click', () => {
+executeSend();
+});
+
+// ENVÍO POR TECLA ENTER
+input.addEventListener('keypress', (e) => {
+if (e.key === 'Enter') executeSend();
+});
+
+window.handleOption = (option) => {
 addMessage(option, 'user');
 const opts = document.getElementById('options-container');
 if(opts) opts.style.display = 'none';
@@ -372,7 +330,7 @@ addMessage("Infrastructure is key. Our elite setups and AI agents start at $1,80
 showBudgetOptions();
 }, 600);
 }
-}
+};
 
 function showBudgetOptions() {
 const container = document.getElementById('chat-messages');
@@ -383,7 +341,7 @@ container.appendChild(div);
 container.scrollTop = container.scrollHeight;
 }
 
-function captureLead(choice) {
+window.captureLead = (choice) => {
 addMessage(choice, 'user');
 if(choice.includes('Yes')) {
 setTimeout(() => {
@@ -393,6 +351,16 @@ addMessage("Perfect. To have Shirley review your case, please type your Email an
 setTimeout(() => {
 addMessage("No problem! Feel free to explore our site or follow us for free tips.", 'bot');
 }, 800);
+}
+};
+
+function executeSend() {
+if(input.value.trim() !== "") {
+addMessage(input.value, 'user');
+input.value = "";
+setTimeout(() => {
+addMessage("Thank you! Shirley will review this. If your project is a match, you'll receive a link shortly.", 'bot');
+}, 1000);
 }
 }
 
@@ -404,17 +372,7 @@ div.innerText = text;
 container.appendChild(div);
 container.scrollTop = container.scrollHeight;
 }
-
-function sendMessage() {
-const input = document.getElementById('chat-input');
-if(input.value.trim() !== "") {
-addMessage(input.value, 'user');
-input.value = "";
-setTimeout(() => {
-addMessage("Thank you! I've logged this. Shirley will review it and send a link if it's a match.", 'bot');
-}, 1000);
-}
-}
+});
 </script>
 
 </body>
