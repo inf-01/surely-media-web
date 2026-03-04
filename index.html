@@ -449,7 +449,7 @@
                 leadStage = 2;
                 return "Thank you! I have securely saved your contact details. A Team Member will review your case and contact you soon. Is there anything else you'd like to know about our services?";
             } else if (leadStage === 1 && (input.includes("yes") || input.includes("sure") || input.includes("talk") || input.includes("interested"))) {
-                return "Excellent! Please provide your Email address and WhatsApp phone number so a Team Member can reach out to you directly.";
+                return "Excellent! Please provide your Email address and Phone Number so a Team Member can reach out to you directly.";
             }
 
             // Knowledge Base matching
@@ -470,7 +470,7 @@
 
             if (input.includes("yes") || input.includes("sure") || input.includes("talk") || input.includes("interested")) {
                 leadStage = 1;
-                return "Excellent! Please provide your Email address and your WhatsApp phone number so a Team Member can reach out to you directly.";
+                return "Excellent! Please provide your Email address and your Phone Number so a Team Member can reach out to you directly.";
             }
 
             if (input.includes("no") || input.includes("not yet")) {
